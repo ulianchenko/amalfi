@@ -4,12 +4,33 @@ import SendIcon from '@mui/icons-material/Send';
 
 const withSubscribe = (Component) => (props) => {
     const [data, setData] = useState('');
-    const handleSubscribe = () => {
+    const [subscribed, setSubscribed] = useState(false);
+    // const [focused, setFocused] = useState(false);
+
+    const handleSubscribe = (event) => {
       setData('');
+      setSubscribed(true);
+      event.currentTarget.focus();
+      // setFocused(false);
+      // console.log(target.closest('.MuiOutlinedInput-root').querySelector('input'));
+      // target.closest('.MuiOutlinedInput-root').firstChild.blur();
+      // target.closest('button').focus();
+      // document.activeElement.blur();
+      setTimeout(() => {
+        setSubscribed(false);
+      }, 1000);
     };
 
-    const handleChange = useCallback(event => {
-      setData(event.target.value);
+    // const handleFocus = () => {
+    //   setFocused(true);
+    // };
+
+    // const handleBlur= () => {
+    //   setFocused(false);
+    // };
+
+    const handleChange = useCallback(({target}) => {
+      setData(target.value);
     }, []);
 
     const handleMouseDown = (e) => {
@@ -20,7 +41,11 @@ const withSubscribe = (Component) => (props) => {
       <Component
         {...props}
         onChange={handleChange}
+        // onFocus={handleFocus}
+        // onBlur={handleBlur}
         value={data}
+        helperText={subscribed ? 'Thank you' : null}
+        // focused={focused}
         InputProps={{
           endAdornment: (
             <InputAdornment position='end'>

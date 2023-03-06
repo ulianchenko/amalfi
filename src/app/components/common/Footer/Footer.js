@@ -9,7 +9,6 @@ import Logo from '../Logo';
 
 const Footer = () => {
   const SubscribeInput = withSubscribe(InputField);
-
   return (
     <footer className='footer'>
       <Container>
@@ -37,7 +36,7 @@ const Footer = () => {
       <Divider variant='fullWidth' className='footer-divider' />
       <Container>
         <div className='footer-bottom'>
-          <p className='footer-copyright'>Copyright © 2021 AMALFI HOTEL. All right reserved.</p>
+          <p className='footer-copyright'>Copyright © 2023 AMALFI HOTEL. All right reserved.</p>
           <Link underline='none' href='https://github.com/ulianchenko/amalfi' rel='noopener noreferrer' target='_blank'>
             <div className='footer-social'>
               <GitHub />

@@ -1,0 +1,17 @@
+.logo-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  & .MuiSvgIcon-root {
+    width: 148px;
+    height: 148px;
+  }
+}
+
+.logo-title {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-left: 13px;
+}

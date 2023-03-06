@@ -1,5 +1,11 @@
-@import '../../components/common/Footer/styles/footer';
-@import '../../components/common/Header/styles/header';
+@import '../components/pages/HomePage/styles/homePage';
+@import '../components/pages/Page404/styles/page404';
 
-@import '../../components/common/Logo/styles/logo';
+@import '../components/common/Footer/styles/footer';
+@import '../components/common/Header/styles/header';
+@import '../components/common/Logo/styles/logo';
+@import '../components/common/NavList/styles/navList';
+
+@import '../components/ui/forms/styles/form';
+@import '../components/ui/forms/SearchRoomsForm/styles/searchRoomsForm';
 
