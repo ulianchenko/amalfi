@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '@mui/material';
-import { Divider } from '@mui/material';
-import { Link } from '@mui/material';
+import Divider from '@mui/material/Divider';
+import Link from '@mui/material/Link';
 import { GitHub } from '@mui/icons-material';
 import { InputField } from '../Fields';
 import withSubscribe from '../Fields/HOC/withSubscribe';

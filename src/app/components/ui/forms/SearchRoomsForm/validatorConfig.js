@@ -1,12 +1,12 @@
 const validatorConfig = {
   arrivalDate: {
     isValidDate: {
-      message: 'Invalid date',
+      message: 'Invalid arrival date',
     },
   },
   departureDate: {
     isValidDate: {
-      message: 'Invalid date',
+      message: 'Invalid departure date',
     },
   },
   adults: {

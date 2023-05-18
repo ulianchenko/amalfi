@@ -24,6 +24,7 @@ const AppRouter = () => {
           <Route path='/' element={<Main />} />
           <Route path='/rooms' element={<Rooms />} >
             <Route path=':roomId' element={<Rooms />} />
+            {/* <Route path='/rooms/*' element={<Rooms />} /> */}
           </Route>
           <Route path='*' element={<Page404 />} />
         </Routes>

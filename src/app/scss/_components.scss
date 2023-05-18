@@ -1,11 +1,25 @@
 @import '../components/pages/HomePage/styles/homePage';
+@import '../components/pages/RoomsPage//styles//roomsPage';
+@import '../components/pages/RoomPage//styles//roomPage';
 @import '../components/pages/Page404/styles/page404';
+@import '../components/ui/forms/SearchRoomsForm/styles/searchRoomsForm';
+@import '../components/ui/GuestsCounter/styles/guestsCounter';
+@import '../components/ui/forms/styles/form';
+@import '../components/ui/forms/SearchRoomsForm/styles/searchRoomsForm';
+@import '../components/ui/rooms/RoomsList/styles/roomsList';
+@import '../components/ui/rooms/RoomCard/styles/roomCard';
+@import '../components/ui/rooms/RoomsFilters/styles/roomsFilters';
 
+@import '../components/common/Button/styles/button';
+@import '../components/common/Counter/styles/counter';
 @import '../components/common/Footer/styles/footer';
 @import '../components/common/Header/styles/header';
 @import '../components/common/Logo/styles/logo';
 @import '../components/common/NavList/styles/navList';
-
-@import '../components/ui/forms/styles/form';
-@import '../components/ui/forms/SearchRoomsForm/styles/searchRoomsForm';
-
+@import '../components/common/Pagination/styles/pagination';
+@import '../components/common/ImageSlider/styles/imageSlider';
+@import '../components/common/Rating/styles/rating';
+@import '../components/common/Badge/styles/badge';
+@import '../components/common/Fields/Checkbox/styles/checkbox';
+@import '../components/common/Fields/CheckboxList/styles/checkboxList';
+@import '../components/common/Fields/RangeSliderField/styles/rangeSliderField';
