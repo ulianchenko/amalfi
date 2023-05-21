@@ -56,5 +56,10 @@ export const loadFilteredRoomsList = (queryParams) => async dispatch => {
 export const getRooms = state => state.roomsReducer.entities;
 export const getFilteredRooms = state => state.roomsReducer.filteredEntities;
 export const getRoomsLoadingStatus = state => state.roomsReducer.isLoading;
+export const getRoomById = (roomId) => (state) => {
+  if (state.roomsReducer.entities) {
+    return state.roomsReducer.entities.find(room => room._id === roomId);
+  }
+};
 
 export default roomsReducer;

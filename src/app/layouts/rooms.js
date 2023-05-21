@@ -29,7 +29,7 @@
 
 import React from 'react';
 import { useParams } from 'react-router';
-// import Breadcrumbs from '../components/common/Breadcrumbs';
+import Breadcrumbs from '../components/common/Breadcrumbs';
 // import Container from '../components/common/Container';
 import { Container } from '@mui/material';
 import Footer from '../components/common/Footer';
@@ -44,8 +44,9 @@ const Rooms = () => {
     <>
       <Header />
       <Container>
-        {/* <Breadcrumbs /> */}
-        {roomId ? <RoomPage roomId={roomId} /> : <RoomsPage />}
+        <Breadcrumbs />
+        {/* {roomId ? <RoomPage roomId={roomId} /> : <RoomsPage />} */}
+        {roomId ? <RoomsPage /> : <RoomsPage />}
       </Container>
       <Footer />
     </>
