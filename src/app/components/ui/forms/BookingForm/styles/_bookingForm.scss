@@ -1,0 +1,18 @@
+.booking-form__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.booking-form__numberRoom-text {
+  font-size: $text-md;
+  font-weight: 700;
+}
+
+.booking-form__numberRoom-type {
+  margin-left: 5px;
+
+  text-transform: uppercase;
+  font-weight: 700;
+  color: $purple;
+}

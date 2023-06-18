@@ -45,8 +45,8 @@ const Rooms = () => {
       <Header />
       <Container>
         <Breadcrumbs />
-        {/* {roomId ? <RoomPage roomId={roomId} /> : <RoomsPage />} */}
-        {roomId ? <RoomsPage /> : <RoomsPage />}
+        {roomId ? <RoomPage roomId={roomId} /> : <RoomsPage />}
+        {/* {roomId ? <RoomsPage /> : <RoomsPage />} */}
       </Container>
       <Footer />
     </>

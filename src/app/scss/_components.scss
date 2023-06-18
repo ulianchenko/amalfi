@@ -1,11 +1,13 @@
 @import '../components/pages/HomePage/styles/homePage';
-@import '../components/pages/RoomsPage//styles//roomsPage';
-@import '../components/pages/RoomPage//styles//roomPage';
+@import '../components/pages/RoomsPage/styles/roomsPage';
+@import '../components/pages/RoomPage/styles/roomPage';
 @import '../components/pages/Page404/styles/page404';
-@import '../components/ui/forms/SearchRoomsForm/styles/searchRoomsForm';
+
 @import '../components/ui/GuestsCounter/styles/guestsCounter';
+@import '../components/ui/forms/SearchRoomsForm/styles/searchRoomsForm';
 @import '../components/ui/forms/styles/form';
 @import '../components/ui/forms/SearchRoomsForm/styles/searchRoomsForm';
+@import '../components/ui/forms/BookingForm/styles/bookingForm';
 @import '../components/ui/rooms/RoomsList/styles/roomsList';
 @import '../components/ui/rooms/RoomCard/styles/roomCard';
 @import '../components/ui/rooms/RoomsFilters/styles/roomsFilters';

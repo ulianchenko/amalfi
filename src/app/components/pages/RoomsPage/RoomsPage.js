@@ -79,7 +79,7 @@ const RoomsPage = () => {
           <RoomsSort sortBy={sortBy} onSort={handleSort} />
           <RoomsDisplayCount count={pageSize} setCount={handleChangePageSize} options={setPageSizeOptions} />
         </div>
-        <h2 className='rooms__title'>Numbers we have find for you</h2>
+        <h2 className='rooms__title'>Numbers we have found for you</h2>
         {roomsIsLoading ? <RoomsListSkeleton pageSize={pageSize} /> : <RoomsList rooms={roomsListCrop} />}
         {roomsListCrop.length === 0 && <h2>We did not find suitable rooms for you according to your parameters. &#128577;</h2>}
 

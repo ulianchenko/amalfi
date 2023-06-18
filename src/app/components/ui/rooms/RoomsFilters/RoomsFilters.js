@@ -13,7 +13,7 @@ const initialState = {
   adults: 1,
   children: 0,
   babies: 0,
-  price: [0, 1000],
+  price: [0, 500],
   canSmoke: false,
   canPets: false,
   canInvite: false,
@@ -50,7 +50,7 @@ const RoomsFilter = ({ onReset }) => {
           name='price'
           onChange={handleChangeFilter}
           min={0}
-          max={1000}
+          max={500}
         />
         <CheckboxList title='Conveniences'>
           <Checkbox label='Wi-Fi' name='hasWifi' />

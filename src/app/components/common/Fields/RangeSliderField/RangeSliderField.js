@@ -14,7 +14,7 @@ const RangeSliderField = ({
   onChange,
   value = [],
   min = 0,
-  max = 1000,
+  max = 500,
   minDistance = 50,
 }) => {
   const [sliderValue, setSliderValue] = useState(value.map(Number));
@@ -69,7 +69,7 @@ const RangeSliderField = ({
           valueLabelDisplay='auto'
           min={min}
           max={max}
-          step={100}
+          step={10}
           onChangeCommitted={() => onChange({ target: { name: name || '', value: sliderValue } })}
         />
         <div className='rangeSlider__inputs'>
@@ -91,7 +91,7 @@ const RangeSliderField = ({
           />
         </div>
 
-        {description && <p className='rangeSlider__description'>One night stay in the room cost</p>}
+        {description && <p className='rangeSlider__description'>One night stay in the room costs</p>}
       </div>
     );
   }

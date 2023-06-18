@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import roomsService from '../services/rooms.service';
 
+//Public Key: vmstbmce
+//Private Key: 044a6924-ce4f-4ec5-b788-3a647db59a4e
+
 const roomsSlice = createSlice({
   name: 'rooms',
   initialState: {
@@ -46,6 +49,7 @@ export const loadFilteredRoomsList = (queryParams) => async dispatch => {
     dispatch(roomsRequested());
     try {
       const content = await roomsService.getAll(queryParams);
+      // console.log(content);
       dispatch(filteredRoomsReceived(content || []));
     } catch (error) {
       dispatch(roomsRequestFailed(error.message));

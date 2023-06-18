@@ -43,8 +43,7 @@ const RoomCard = ({ _id, roomNumber, price, type, images, comforts }) => {
         <div className='room-card__description-row'>
           <h3 className='room-card__title'>
             № <span className='room-card__title--big'>{roomNumber}</span>
-            {/* {type === 'Lux' && <span className='room-card__type'>{type}</span>} */}
-            {type === 'Lux' && <span className='room-card__type'>Suite</span>}
+            {type === 'Suite' && <span className='room-card__type'>{type}</span>}
           </h3>
           <div className='room-card__rentPerDay'>
             <span>{price}&#8364;</span> per night
