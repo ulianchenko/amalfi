@@ -4,7 +4,7 @@ import { validator } from '../utils/validator';
 function useForm(initialData, validateOnChange, validatorConfig) {
   const [data, setData] = useState(initialData);
   const [errors, setErrors] = useState({});
-  // const [enterError, setEnterError] = useState(null);
+  const [enterError, setEnterError] = useState(null);
 
   const validate = useCallback(
     data => {
@@ -22,27 +22,27 @@ function useForm(initialData, validateOnChange, validatorConfig) {
         ...prevState,
         [name]: value,
       }));
-      // setEnterError(null);
+      setEnterError(null);
       setErrors({});
       if (validateOnChange) validate({ [name]: value });
     },
     [validateOnChange, validate]
   );
 
-  // const handleKeyDown = useCallback(event => {
-  //   if (event.keyCode === 13) {
-  //     event.preventDefault();
-  //     const form = event.target.form;
-  //     console.log(form);
-  //     const formElements = [...form.elements].filter(
-  //       el => el.tagName.toLowerCase() === 'input' || el.tagName.toLowerCase() === 'button'
-  //     );
-  //     console.log(formElements);
-  //     const indexField = Array.prototype.indexOf.call(formElements, event.target);
-  //     console.log(indexField);
-  //     formElements[indexField + 1].focus();
-  //   }
-  // }, []);
+  const handleKeyDown = useCallback(event => {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      const form = event.target.form;
+      console.log(form);
+      const formElements = [...form.elements].filter(
+        el => el.tagName.toLowerCase() === 'input' || el.tagName.toLowerCase() === 'button'
+      );
+      console.log(formElements);
+      const indexField = Array.prototype.indexOf.call(formElements, event.target);
+      console.log(indexField);
+      formElements[indexField + 1].focus();
+    }
+  }, []);
 
   const handleResetForm = (event) => {
     event.preventDefault();
@@ -55,19 +55,17 @@ function useForm(initialData, validateOnChange, validatorConfig) {
     setData,
     errors,
     setErrors,
-    // enterError,
-    // setEnterError,
+    enterError,
+    setEnterError,
     handleInputChange,
-    // handleKeyDown,
+    handleKeyDown,
     validate,
     handleResetForm,
   };
 }
 
-// function Form({ children, handleChange, data, errors, handleKeyDown, ...rest }) {
 function Form({ children, handleChange, data, errors, handleKeyDown, ...rest }) {
   const clonedElements = React.Children.map(children, child => {
-    // const item = child;
     const childType = typeof child;
     let config = { name: '' };
     if (

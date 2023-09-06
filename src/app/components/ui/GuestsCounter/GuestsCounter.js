@@ -7,8 +7,6 @@ export const getGuestsLabel = (adults, children, babies) => {
   const countGuests = guests.reduce((acc, cur) => acc + cur, 0);
   const countBabies = Number(babies);
 
-  // const guestsStr = `${countGuests} ${declOfNum(countGuests, ['guest', 'guests', 'guests'])}`;
-  // const babiesStr = `${countBabies} ${declOfNum(countBabies, ['baby', 'babies', 'babies'])}`;
   const guestsStr = `${countGuests} ${declOfNum(countGuests, ['guest', 'guests'])}`;
   const babiesStr = `${countBabies} ${declOfNum(countBabies, ['baby', 'babies'])}`;
 

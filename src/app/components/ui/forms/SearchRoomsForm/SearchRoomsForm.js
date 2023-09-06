@@ -8,7 +8,6 @@ import GuestsCounter from '../../GuestsCounter';
 import validatorConfig from './validatorConfig';
 import queryString from 'query-string';
 import { setSessionStorageData } from '../../../../services/sessionStorage.service';
-// import history from '../../../../utils/history';
 
 const oneDayMs = 86400000;
 
@@ -21,7 +20,6 @@ const initialState = {
 };
 
 const SearchRoomsForm = () => {
-  // const { data, errors, handleInputChange, handleKeyDown, validate, handleResetForm } = useForm(
   const { data, errors, handleInputChange, validate, handleResetForm } = useForm(
     initialState,
     true,
@@ -35,13 +33,11 @@ const SearchRoomsForm = () => {
     if (validate(data)) {
       const queryParams = queryString.stringify(data);
       setSessionStorageData(queryParams);
-      // history.push(`/rooms?${queryParams}`);
       navigate(`/rooms?${queryParams}`);
     }
   };
 
   return (
-    // <Form data={data} errors={errors} handleChange={handleInputChange} handleKeyDown={handleKeyDown} >
     <Form data={data} errors={errors} handleChange={handleInputChange} >
       <DateOfStayField data={data} onChange={handleInputChange} errors={errors} />
       <GuestsCounter data={data} onChange={handleInputChange} />

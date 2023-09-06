@@ -1,5 +1,4 @@
 import React from 'react';
-// import { TextField } from '@mui/material';
 import DatePickerField from '../DatePickerField';
 
 const oneDayMs = 86400000;
@@ -17,9 +16,6 @@ const DateOfStay = ({ onChange, data, errors }) => {
           onChange={onChange}
           value={+arrivalDate}
           error={errors?.arrivalDate}
-          // renderInput={params => (
-          //   <TextField {...params} {...(errors?.arrivalDate && { error: true, helperText: errors?.arrivalDate })} />
-          // )}
         />
       </div>
       <div className='dateOfStay'>
@@ -30,9 +26,6 @@ const DateOfStay = ({ onChange, data, errors }) => {
           onChange={onChange}
           value={+departureDate}
           error={errors?.departureDate}
-          // renderInput={params => (
-          //   <TextField {...params} {...(errors?.departureDate && { error: true, helperText: errors?.departureDate })} />
-          // )}
         />
       </div>
     </div>

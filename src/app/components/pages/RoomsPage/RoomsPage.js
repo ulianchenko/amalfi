@@ -1,9 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useFiltersQuery, usePagination, useSort, useSearch } from '../../../hooks';
-// import useSearch from '../../../hooks/useSearch';
 import { setSessionStorageData } from '../../../services/sessionStorage.service';
-// import { getFilteredRooms, getRooms, getRoomsLoadingStatus, loadFilteredRoomsList } from '../../../store/rooms';
 import { getFilteredRooms, getRoomsLoadingStatus, loadFilteredRoomsList } from '../../../store/rooms';
 import Pagination from '../../common/Pagination';
 import Searchbar from '../../common/Searchbar';
@@ -24,7 +22,6 @@ const RoomsPage = () => {
   const dispatch = useDispatch();
 
   const rooms = useSelector(getFilteredRooms);
-  // const rooms = useSelector(getRooms);
   const roomsIsLoading = useSelector(getRoomsLoadingStatus);
 
   const { searchFilters, handleResetSearchFilters } = useFiltersQuery();

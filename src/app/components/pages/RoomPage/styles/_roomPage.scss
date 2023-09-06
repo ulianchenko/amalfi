@@ -92,8 +92,6 @@
     margin: 0 auto;
     padding: 5px;
     z-index: 2;
-    // background-color: $accent25;
-    // border: 1px solid $gold;
     color: $gold;
     & .MuiSvgIcon-root {
       width: 40px;
@@ -103,8 +101,6 @@
 
   &:hover {
     &.MuiIconButton-root {
-      // background-color: $accent50;
-      // border: 1px solid $gold;
       color: $gold;
     }
   }

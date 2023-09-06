@@ -1,13 +1,11 @@
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
 import { useCallback, useMemo } from 'react';
 import omit from 'lodash/omit';
-// import history from '../utils/history';
 
 const useFiltersQuery = () => {
   const { search } = useLocation();
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const searchFilters = useMemo(() => {
     return queryString.parse(search, { parseNumbers: true, parseBooleans: true });
@@ -16,12 +14,8 @@ const useFiltersQuery = () => {
   const setSearchQuery = useCallback(
     filter => {
       const search = queryString.stringify(filter);
-      // history.replace({ search });
-      // navigate(`/rooms/${search}`, { replace: true });
       navigate({pathname: '/rooms', search: search});
-      // setSearchParams({ ...filter });
     },
-    // [history]
     [navigate]
   );
 
@@ -49,13 +43,8 @@ const useFiltersQuery = () => {
 
     [searchFilters, setSearchQuery, clearFilter]
   );
-  // const handleResetSearchFilters = useCallback(() => {
-  //   history.replace({});
-  // }, [history]);
   const handleResetSearchFilters = useCallback(() => {
-    // navigate('/rooms', { replace: true });
     navigate({pathname: '/rooms', search: ''});
-    // setSearchParams({});
   }, [navigate]);
 
   return { searchFilters, handleChangeFilter, handleResetSearchFilters };

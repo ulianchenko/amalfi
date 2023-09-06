@@ -12,7 +12,6 @@ const withSubscribe = (Component) => (props) => {
       setSubscribed(true);
       event.currentTarget.focus();
       // setFocused(false);
-      // console.log(target.closest('.MuiOutlinedInput-root').querySelector('input'));
       // target.closest('.MuiOutlinedInput-root').firstChild.blur();
       // target.closest('button').focus();
       // document.activeElement.blur();

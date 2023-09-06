@@ -1,4 +1,3 @@
-// import isValid from 'date-fns/isValid';
 import dayjs from 'dayjs';
 
 export function validator(data, validatorConfig) {
@@ -43,7 +42,6 @@ export function validator(data, validatorConfig) {
         break;
       }
       case 'isValidDate': {
-        // statusValidate = !isValid(fieldData);
         statusValidate = !dayjs(fieldData).isValid();
         break;
       }

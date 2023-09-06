@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAction, createSlice } from '@reduxjs/toolkit';
 import roomsService from '../services/rooms.service';
 
 //Public Key: vmstbmce
@@ -35,6 +35,10 @@ const { actions, reducer: roomsReducer } = roomsSlice;
 
 const { roomsRequested, roomsReceived, roomsRequestFailed, filteredRoomsReceived } = actions;
 
+const addBookingRoomRequested = createAction('rooms/addBookingRoomRequested');
+const addBookingRoomRequestedSuccess = createAction('rooms/addBookingRoomRequestedSuccess');
+const addBookingRoomRequestedFailed = createAction('rooms/addBookingRoomRequestedFailed');
+
 export const loadRoomsList = () => async dispatch => {
   dispatch(roomsRequested());
   try {
@@ -49,10 +53,21 @@ export const loadFilteredRoomsList = (queryParams) => async dispatch => {
     dispatch(roomsRequested());
     try {
       const content = await roomsService.getAll(queryParams);
-      // console.log(content);
       dispatch(filteredRoomsReceived(content || []));
     } catch (error) {
       dispatch(roomsRequestFailed(error.message));
+    }
+  };
+
+  export const addBookingRoom =
+  (payload) =>
+  async dispatch => {
+    dispatch(addBookingRoomRequested());
+    try {
+      roomsService.setBooking(payload);
+      dispatch(addBookingRoomRequestedSuccess());
+    } catch (error) {
+      dispatch(addBookingRoomRequestedFailed());
     }
   };
 

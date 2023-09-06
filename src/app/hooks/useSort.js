@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 export default function useSort(items, initialSortBy) {
-  // useSort(rooms, { path: 'roomNumber', order: 'desc' });
   const [sortBy, setSortBy] = useState(initialSortBy || {});
 
   function descendingComparator(a, b, orderBy) {
