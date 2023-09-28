@@ -49,6 +49,10 @@ const usersSlice = createSlice({
     authRequestFailed: (state, action) => {
       state.error = action.payload;
     },
+    userLoggedOut: state => {
+      state.isLoggedIn = false;
+      state.auth.userId = null;
+    }
   }
 });
 
@@ -60,9 +64,11 @@ const {
   usersRequestFailed,
   authRequested,
   authRequestSuccess,
-  authRequestFailed
+  authRequestFailed,
+  userLoggedOut
 } = actions;
 
+// export const signIn = ({ payload, redirect }, navigate) => async dispatch => {
 export const signIn = ({ payload, redirect }, navigate) => async dispatch => {
   const { email, password } = payload;
   dispatch(authRequested());
@@ -70,7 +76,7 @@ export const signIn = ({ payload, redirect }, navigate) => async dispatch => {
     const data = await authService.signIn({ email, password });
     setTokens(data);
     dispatch(authRequestSuccess({ userId: data.userId }));
-    navigate(redirect || '/');
+    // navigate(redirect || '/');
   } catch (error) {
     const { code, message } = error.response.data.error;
     if (code === 400) {
@@ -82,16 +88,24 @@ export const signIn = ({ payload, redirect }, navigate) => async dispatch => {
   }
 };
 
-export const signUp = (payload, navigate) => async dispatch => {
+// export const signUp = (payload, navigate) => async dispatch => {
+export const signUp = (payload) => async dispatch => {
   dispatch(authRequested());
   try {
     const data = await authService.signUp(payload);
     setTokens(data);
     dispatch(authRequestSuccess({ userId: data.userId }));
-    navigate('/');
+    // navigate('/');
   } catch (error) {
     dispatch(authRequestFailed(error.message));
   }
+};
+
+// export const logOut = (navigate) => async dispatch => {
+export const logOut = () => async dispatch => {
+  localStorageService.removeAuthData();
+  dispatch(userLoggedOut());
+  // navigate('/');
 };
 
 export const loadUsersList = () => async (dispatch, getState) => {

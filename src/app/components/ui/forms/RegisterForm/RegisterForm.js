@@ -36,7 +36,9 @@ const RegisterForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate(data)) {
-      dispatch(signUp(data, navigate));
+      // dispatch(signUp(data, navigate));
+      dispatch(signUp(data));
+      navigate('/');
     }
   };
 

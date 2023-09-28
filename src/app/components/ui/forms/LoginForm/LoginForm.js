@@ -28,7 +28,9 @@ const LoginForm = () => {
     e.preventDefault();
     if (validate(data)) {
       const redirect = location.state ? location.state.from.pathname : '/';
-      dispatch(signIn({ payload: data, redirect }, navigate));
+      // dispatch(signIn({ payload: data, redirect }, navigate));
+      dispatch(signIn({ payload: data, redirect }));
+      navigate(redirect || '/');
       handleResetForm(e);
     }
   };
