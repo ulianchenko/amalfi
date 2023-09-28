@@ -22,11 +22,13 @@ export const navigationRoutes = [
         <Suspense fallback={<></>}>
           <Routes>
             <Route path='/' element={<Main />} />
-            {/* <Route path='/rooms' element={<Rooms/>} >
+            <Route path='/rooms' element={<Rooms/>} >
               <Route path=':roomId' element={<Rooms />} />
-            </Route> */}
-            <Route path='/rooms/:roomId' element={<Rooms />} />
-            <Route path='/login/:type?' element={<Login />} />
+            </Route>
+            {/* <Route path='/rooms/:roomId' element={<Rooms />} /> */}
+            <Route path='/login' element={<Login />} >
+              <Route path=':type' element={<Login />} />
+            </Route>
             <Route path='*' element={<Page404 />} />
           </Routes>
         </Suspense>

@@ -4,7 +4,7 @@ const http = () => {
 
   const get = async (requestEndPoint, queryParams = null, method = 'GET', body = null, headers = {'Content-Type': 'application/json'}) => {
     const url = new URL(`${configFile.apiEndPoint}${requestEndPoint}`);
-    
+
     if (queryParams) {
       Object.keys(queryParams).forEach(key => {
         if (Array.isArray(queryParams[key])) {
@@ -30,8 +30,9 @@ const http = () => {
 
   const post = async (requestEndPoint, body = null, method = 'POST', headers = {'Content-Type': 'application/json'}) => {
     const url = `${configFile.apiEndPoint}${requestEndPoint}`
+    const bodyStringified = JSON.stringify(body);
     try {
-      const response = await fetch(url, {method, body, headers});
+      const response = await fetch(url, {method, body: bodyStringified, headers});
 
         if (!response.ok) {
             throw new Error(`Could not fetch ${url}, status: ${response.status}`);

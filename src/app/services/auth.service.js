@@ -1,10 +1,15 @@
 import httpService from './http.service';
 
-const authEndPoint = 'auth/signInWithPassword/'
+const authEndPointSignIn = 'auth/signInWithPassword/';
+const authEndPointSignUp = 'auth/signUp/';
 
 const authService = {
+  signUp: async (payload) => {
+    const data = await httpService.post(authEndPointSignUp, payload);
+    return data;
+  },
   signIn: async ({ email, password }) => {
-    const data = await httpService.post(authEndPoint, {
+    const data = await httpService.post(authEndPointSignIn, {
       email,
       password,
       returnSecureToken: true,
