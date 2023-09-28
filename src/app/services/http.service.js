@@ -41,14 +41,46 @@ const http = () => {
     } catch(error) {
         throw error;
     }
-  }
+  };
 
-  return { get, post };
+  const patch = async (requestEndPoint, body = null, method = 'PATCH', headers = {'Content-Type': 'application/json'}) => {
+    const url = `${configFile.apiEndPoint}${requestEndPoint}`
+    try {
+      const response = await fetch(url, {method, body, headers});
+
+        if (!response.ok) {
+            throw new Error(`Could not fetch ${url}, status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch(error) {
+        throw error;
+    }
+  };
+
+  const deleteReq = async (requestEndPoint, body = null, method = 'DELETE', headers = {'Content-Type': 'application/json'}) => {
+    const url = `${configFile.apiEndPoint}${requestEndPoint}`
+    try {
+      const response = await fetch(url, {method, body, headers});
+
+        if (!response.ok) {
+            throw new Error(`Could not fetch ${url}, status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch(error) {
+        throw error;
+    }
+  };
+
+  return { get, post, patch, deleteReq };
 }
 
 const httpService = {
   get: http().get,
   post: http().post,
+  patch: http().patch,
+  delete: http().deleteReq
 };
 
 export default httpService;

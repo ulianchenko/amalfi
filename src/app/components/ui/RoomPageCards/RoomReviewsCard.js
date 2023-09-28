@@ -6,7 +6,7 @@ const RoomReviewsCard = ({ countReviews = 0, rate = 0 }) => {
 
   return (
     <div className='room-info__card'>
-      <h3 className='room-info__card-title'>Room reviews</h3>
+      <h3 className='room-info__card-title'>Room rating</h3>
       {countReviews > 0 ? (
         <>
           <p className='room-info__card-rating__title'>

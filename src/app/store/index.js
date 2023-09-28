@@ -3,6 +3,7 @@ import roomsReducer from './rooms';
 import reviewsReducer from './reviews';
 import bookingsReducer from './bookings';
 import usersReducer from './users';
+import likesReducer from './likes';
 
 const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
         reviewsReducer,
         bookingsReducer,
         usersReducer,
+        likesReducer
     }
 });
 

@@ -28,16 +28,23 @@ const roomsSlice = createSlice({
       state.error = action.payload;
       state.isLoading = false;
     },
+    roomUpdated: (state, action) => {
+      const roomIndex = state.entities.findIndex(room => room._id === action.payload._id);
+      state.entities[roomIndex] = action.payload;
+    },
   },
 });
 
 const { actions, reducer: roomsReducer } = roomsSlice;
 
-const { roomsRequested, roomsReceived, roomsRequestFailed, filteredRoomsReceived } = actions;
+const { roomsRequested, roomsReceived, roomsRequestFailed, filteredRoomsReceived, roomUpdated } = actions;
 
 const addBookingRoomRequested = createAction('rooms/addBookingRoomRequested');
 const addBookingRoomRequestedSuccess = createAction('rooms/addBookingRoomRequestedSuccess');
 const addBookingRoomRequestedFailed = createAction('rooms/addBookingRoomRequestedFailed');
+
+const roomUpdateRequested = createAction('rooms/roomUpdateRequested');
+const roomUpdateRequestedFailed = createAction('rooms/roomUpdateRequestedFailed');
 
 export const loadRoomsList = () => async dispatch => {
   dispatch(roomsRequested());
@@ -50,14 +57,27 @@ export const loadRoomsList = () => async dispatch => {
 };
 
 export const loadFilteredRoomsList = (queryParams) => async dispatch => {
-    dispatch(roomsRequested());
-    try {
-      const content = await roomsService.getAll(queryParams);
-      dispatch(filteredRoomsReceived(content || []));
-    } catch (error) {
-      dispatch(roomsRequestFailed(error.message));
-    }
-  };
+  dispatch(roomsRequested());
+  try {
+    const content = await roomsService.getAll(queryParams);
+    dispatch(filteredRoomsReceived(content || []));
+  } catch (error) {
+    dispatch(roomsRequestFailed(error.message));
+  }
+};
+
+export const updateRoomData =
+(payload) =>
+async dispatch => {
+  dispatch(roomUpdateRequested());
+  try {
+    const content = await roomsService.update(payload);
+    dispatch(roomUpdated(content));
+  } catch (error) {
+    console.log(error);
+    dispatch(roomUpdateRequestedFailed());
+  }
+};
 
   export const addBookingRoom =
   (payload) =>

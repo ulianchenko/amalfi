@@ -13,22 +13,25 @@ export const navigationRoutes = [
 ];
 
   const AppRouter = () => {
-  const Rooms = React.lazy(() => import('../layouts/rooms'));
+    const Login = React.lazy(() => import('../layouts/login'));
+    const Rooms = React.lazy(() => import('../layouts/rooms'));
 
 
-  return (
-    <BrowserRouter>
-      <Suspense fallback={<></>}>
-        <Routes>
-          <Route path='/' element={<Main />} />
-          <Route path='/rooms' element={<Rooms/>} >
-            <Route path=':roomId' element={<Rooms />} />
-          </Route>
-          <Route path='*' element={<Page404 />} />
-        </Routes>
-      </Suspense>
-    </BrowserRouter>
-  );
+    return (
+      <BrowserRouter>
+        <Suspense fallback={<></>}>
+          <Routes>
+            <Route path='/' element={<Main />} />
+            {/* <Route path='/rooms' element={<Rooms/>} >
+              <Route path=':roomId' element={<Rooms />} />
+            </Route> */}
+            <Route path='/rooms/:roomId' element={<Rooms />} />
+            <Route path='/login/:type?' element={<Login />} />
+            <Route path='*' element={<Page404 />} />
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
+    );
 };
 
 export default AppRouter;
