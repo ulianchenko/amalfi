@@ -1,5 +1,8 @@
-import SearchRoomsForm from './SearchRoomsForm';
 import BookingForm from './BookingForm';
+import LoginForm from './LoginForm';
+import RegisterForm from './RegisterForm';
 import ReviewsForm from './ReviewsForm';
+import SearchRoomsForm from './SearchRoomsForm';
+import RoomEditForm from './RoomEditForm';
 
-export { SearchRoomsForm, BookingForm, ReviewsForm };
+export { BookingForm, LoginForm, RegisterForm, ReviewsForm, SearchRoomsForm, RoomEditForm };

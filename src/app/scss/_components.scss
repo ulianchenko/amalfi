@@ -2,7 +2,9 @@
 @import '../components/pages/RoomsPage/styles/roomsPage';
 @import '../components/pages/RoomPage/styles/roomPage';
 @import '../components/pages/Page404/styles/page404';
+@import '../components/pages/ProfilePage/styles/profilePage';
 
+@import '../components/ui/booking/BookingCard/styles/bookingCard';
 @import '../components/ui/rooms/RoomsList/styles/roomsList';
 @import '../components/ui/rooms/RoomsFilters/styles/roomsFilters';
 @import '../components/ui/rooms/RoomCard/styles/roomCard';
@@ -17,6 +19,10 @@
 @import '../components/ui/forms/SearchRoomsForm/styles/searchRoomsForm';
 @import '../components/ui/forms/BookingForm/styles/bookingForm';
 @import '../components/ui/forms/ReviewsForm/styles/reviewsForm';
+@import '../components/ui/forms/ProfileEditForm/styles/profileEditForm';
+@import '../components/ui/profile/AdminDashboard/BookingTable/styles/bookingTableRow';
+@import '../components/ui/profile/ProfileEdit/styles/profileEdit';
+@import '../components/ui/profile/UserProfile/styles/userProfile';
 
 @import '../components/common/Avatar/styles/avatar';
 @import '../components/common/Button/styles/button';
@@ -31,6 +37,7 @@
 @import '../components/common/ImageSlider/styles/imageSlider';
 @import '../components/common/Rating/styles/rating';
 @import '../components/common/Badge/styles/badge';
+@import '../components/common/Sidebar/styles/sidebar';
 @import '../components/common/Fields/Checkbox/styles/checkbox';
 @import '../components/common/Fields/CheckboxList/styles/checkboxList';
 @import '../components/common/Fields/RangeSliderField/styles/rangeSliderField';

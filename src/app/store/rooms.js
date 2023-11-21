@@ -1,9 +1,6 @@
 import { createAction, createSlice } from '@reduxjs/toolkit';
 import roomsService from '../services/rooms.service';
 
-//Public Key: vmstbmce
-//Private Key: 044a6924-ce4f-4ec5-b788-3a647db59a4e
-
 const roomsSlice = createSlice({
   name: 'rooms',
   initialState: {
@@ -46,6 +43,10 @@ const addBookingRoomRequestedFailed = createAction('rooms/addBookingRoomRequeste
 const roomUpdateRequested = createAction('rooms/roomUpdateRequested');
 const roomUpdateRequestedFailed = createAction('rooms/roomUpdateRequestedFailed');
 
+const removeBookingRoomRequested = createAction('rooms/removeBookingRoomRequested');
+const removeBookingRoomRequestedSuccess = createAction('rooms/removeBookingRoomRequestedSuccess');
+const removeBookingRoomRequestedFailed = createAction('rooms/removeBookingRoomRequestedFailed');
+
 export const loadRoomsList = () => async dispatch => {
   dispatch(roomsRequested());
   try {
@@ -67,19 +68,19 @@ export const loadFilteredRoomsList = (queryParams) => async dispatch => {
 };
 
 export const updateRoomData =
-(payload) =>
-async dispatch => {
-  dispatch(roomUpdateRequested());
-  try {
-    const content = await roomsService.update(payload);
-    dispatch(roomUpdated(content));
-  } catch (error) {
-    console.log(error);
-    dispatch(roomUpdateRequestedFailed());
-  }
-};
+  (payload) =>
+  async dispatch => {
+    dispatch(roomUpdateRequested());
+    try {
+      const content = await roomsService.update(payload);
+      dispatch(roomUpdated(content));
+    } catch (error) {
+      console.log(error);
+      dispatch(roomUpdateRequestedFailed());
+    }
+  };
 
-  export const addBookingRoom =
+export const addBookingRoom =
   (payload) =>
   async dispatch => {
     dispatch(addBookingRoomRequested());
@@ -90,15 +91,32 @@ async dispatch => {
       dispatch(addBookingRoomRequestedFailed());
     }
   };
+export const removeBookingRoom =
+  (payload) =>
+  async dispatch => {
+    dispatch(removeBookingRoomRequested());
+    try {
+      roomsService.deleteBooking(payload);
+      dispatch(removeBookingRoomRequestedSuccess());
+    } catch (error) {
+      dispatch(removeBookingRoomRequestedFailed());
+    }
+  };
 
 // selectors:
-export const getRooms = state => state.roomsReducer.entities;
-export const getFilteredRooms = state => state.roomsReducer.filteredEntities;
-export const getRoomsLoadingStatus = state => state.roomsReducer.isLoading;
+export const getRooms = () => state => state.roomsReducer.entities;
+export const getFilteredRooms = () => state => state.roomsReducer.filteredEntities;
+export const getRoomsLoadingStatus = () => state => state.roomsReducer.isLoading;
 export const getRoomById = (roomId) => (state) => {
   if (state.roomsReducer.entities) {
     return state.roomsReducer.entities.find(room => room._id === roomId);
   }
+};
+export const getRoomsByIds = (roomsIds) => (state) => {
+  if (state.roomsReducer.entities) {
+    return state.roomsReducer.entities.filter(room => (roomsIds.length > 0 ? roomsIds.includes(room._id || '') : false));
+  }
+  return [];
 };
 
 export default roomsReducer;

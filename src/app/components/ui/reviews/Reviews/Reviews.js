@@ -29,7 +29,7 @@ const Reviews = () => {
       )}
       {currentUserId && (
         <section className='reviews-form'>
-          <h2>feedback</h2>
+          <h2>Leave feedback</h2>
           <ReviewsForm />
         </section>
       )}

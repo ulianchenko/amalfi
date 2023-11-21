@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CheckBoxList = ({ children, onChange, data }) => {
+const CheckboxList = ({ children, onChange, data }) => {
   return (
     <ul className='checkbox-list'>
       {React.Children.map(children, child => {
@@ -16,4 +16,4 @@ const CheckBoxList = ({ children, onChange, data }) => {
   );
 };
 
-export default CheckBoxList;
+export default CheckboxList;

@@ -55,7 +55,7 @@ const RoomsFilter = ({ onReset }) => {
         <CheckboxList title='Conveniences'>
           <Checkbox label='Wi-Fi' name='hasWifi' />
           <Checkbox label='Air conditioning' name='hasConditioner' />
-          <Checkbox label='Workplace' name='hasWorkSpace' />
+          <Checkbox label='Workspace' name='hasWorkSpace' />
         </CheckboxList>
         <CheckboxList title='Accommodation conditions'>
           <Checkbox label='Pets are allowed' name='canPets' />
@@ -66,7 +66,7 @@ const RoomsFilter = ({ onReset }) => {
           <Checkbox
             label='Wide corridor'
             name='hasWideCorridor'
-            labelDetails='The width of the corridors in the room is not less than 91cm'
+            labelDetails='The corridor width is not less than 90 cm'
           />
           <Checkbox
             label='Assistant for the Disabled'

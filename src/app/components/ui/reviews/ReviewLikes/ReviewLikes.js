@@ -9,15 +9,22 @@ const ReviewLikes = ({ reviewId }) => {
   const dispatch = useDispatch();
   const currentUserId = useSelector(getCurrentUserId());
   const likes = useSelector(getLikesByReviewId(reviewId));
+  const likesStr = likes.join('');
 
   const isLiked = likes.some(like => like.userId === currentUserId);
 
+  // useEffect(() => {
+  //   if (currentUserId) {
+  //     setStatus(isLiked);
+  //   }
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [likes, currentUserId]);
   useEffect(() => {
     if (currentUserId) {
       setStatus(isLiked);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [likes, currentUserId]);
+  }, [likesStr, currentUserId]);
 
   const toggleLike = () => {
     const likeData = { userId: currentUserId || '', reviewId };

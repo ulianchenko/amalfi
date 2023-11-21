@@ -1,4 +1,5 @@
 import configFile from '../config.json';
+import localStorageService from './localStorage.service';
 
 const http = () => {
 
@@ -29,7 +30,28 @@ const http = () => {
   };
 
   const post = async (requestEndPoint, body = null, method = 'POST', headers = {'Content-Type': 'application/json'}) => {
-    const url = `${configFile.apiEndPoint}${requestEndPoint}`
+    const url = `${configFile.apiEndPoint}${requestEndPoint}`;
+    const accessToken = localStorageService.getAccessToken();
+    headers = {...headers, Authorization: `Bearer ${accessToken}`};
+    const bodyStringified = JSON.stringify(body);
+    try {
+      const response = await fetch(url, {method, body: bodyStringified, headers});
+
+        if (!response.ok) {
+          const errorResponse = await response.json();
+          throw errorResponse;
+        }
+        const data = await response.json();
+        return data;
+    } catch(error) {
+        throw error;
+    }
+  };
+
+  const patch = async (requestEndPoint, body = null, method = 'PATCH', headers = {'Content-Type': 'application/json'}) => {
+    const url = `${configFile.apiEndPoint}${requestEndPoint}`;
+    const accessToken = localStorageService.getAccessToken();
+    headers = {...headers, Authorization: `Bearer ${accessToken}`};
     const bodyStringified = JSON.stringify(body);
     try {
       const response = await fetch(url, {method, body: bodyStringified, headers});
@@ -44,23 +66,10 @@ const http = () => {
     }
   };
 
-  const patch = async (requestEndPoint, body = null, method = 'PATCH', headers = {'Content-Type': 'application/json'}) => {
-    const url = `${configFile.apiEndPoint}${requestEndPoint}`
-    try {
-      const response = await fetch(url, {method, body, headers});
-
-        if (!response.ok) {
-            throw new Error(`Could not fetch ${url}, status: ${response.status}`);
-        }
-        const data = await response.json();
-        return data;
-    } catch(error) {
-        throw error;
-    }
-  };
-
   const deleteReq = async (requestEndPoint, body = null, method = 'DELETE', headers = {'Content-Type': 'application/json'}) => {
-    const url = `${configFile.apiEndPoint}${requestEndPoint}`
+    const url = `${configFile.apiEndPoint}${requestEndPoint}`;
+    const accessToken = localStorageService.getAccessToken();
+    headers = {...headers, Authorization: `Bearer ${accessToken}`};
     try {
       const response = await fetch(url, {method, body, headers});
 

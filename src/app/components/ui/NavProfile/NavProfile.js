@@ -41,7 +41,7 @@ const NavProfile = () => {
     const { avatarPhoto, firstName, secondName } = currentUser;
     return (
       <div className='profile-wrapper'>
-        <Tooltip title='Открыть меню' placement='bottom'>
+        <Tooltip title='Open menu' placement='bottom'>
           <IconButton onClick={handleOpenUserMenu} className='profile-avatar__btn'>
             <Avatar alt='user-photo' src={avatarPhoto || ''} />
           </IconButton>

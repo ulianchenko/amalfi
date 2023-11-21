@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAction, createSlice } from '@reduxjs/toolkit';
 import localStorageService, { setTokens } from '../services/localStorage.service';
 import generateAuthError from '../utils/generateAuthError';
 import userService from '../services/user.service';
@@ -49,6 +49,10 @@ const usersSlice = createSlice({
     authRequestFailed: (state, action) => {
       state.error = action.payload;
     },
+    userUpdated: (state, action) => {
+      const userIndex = state.entities.findIndex(user => user._id === action.payload._id);
+      state.entities[userIndex] = action.payload;
+    },
     userLoggedOut: state => {
       state.isLoggedIn = false;
       state.auth.userId = null;
@@ -65,15 +69,32 @@ const {
   authRequested,
   authRequestSuccess,
   authRequestFailed,
+  userUpdated,
   userLoggedOut
 } = actions;
 
+const userUpdateRequested = createAction('users/userUpdateRequested');
+const userUpdateRequestedFailed = createAction('users/userUpdateRequestedFailed');
+
+export const updateUserData =
+  (payload) =>
+  async dispatch => {
+    dispatch(userUpdateRequested());
+    try {
+      const content = await userService.updateUserData(payload);
+      dispatch(userUpdated(content));
+    } catch (error) {
+      dispatch(userUpdateRequestedFailed());
+    }
+  };
+
 // export const signIn = ({ payload, redirect }, navigate) => async dispatch => {
-export const signIn = ({ payload, redirect }, navigate) => async dispatch => {
+export const signIn = (payload) => async dispatch => {
   const { email, password } = payload;
   dispatch(authRequested());
   try {
     const data = await authService.signIn({ email, password });
+
     setTokens(data);
     dispatch(authRequestSuccess({ userId: data.userId }));
     // navigate(redirect || '/');

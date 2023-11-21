@@ -21,8 +21,8 @@ const setPageSizeOptions = [
 const RoomsPage = () => {
   const dispatch = useDispatch();
 
-  const rooms = useSelector(getFilteredRooms);
-  const roomsIsLoading = useSelector(getRoomsLoadingStatus);
+  const rooms = useSelector(getFilteredRooms());
+  const roomsIsLoading = useSelector(getRoomsLoadingStatus());
 
   const { searchFilters, handleResetSearchFilters } = useFiltersQuery();
   const { filteredData, searchTerm, setSearchTerm, handleChangeSearch } = useSearch(rooms, {

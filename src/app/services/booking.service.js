@@ -11,6 +11,10 @@ const bookingService = {
     const data = await httpService.post(bookingEndPoint, payload);
     return data;
   },
+  remove: async (id) => {
+    await httpService.delete(bookingEndPoint + id);
+    return id;
+  },
 };
 
 export default bookingService;

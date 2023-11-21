@@ -93,7 +93,16 @@ export const removeReview =
     }
   };
 
-// selectors:
+
+  // selectors:
+export const getReviewsByIds = (reviewsIds) => (state) => {
+  if (state.reviewsReducer.entities) {
+    return state.reviewsReducer.entities.filter((review) => reviewsIds.includes(review._id || ''));
+  } else {
+    return [];
+  }
+};
+
 export const getReviewsByRoomId = (roomId) => (state) => {
   if (state.reviewsReducer.entities) {
     return state.reviewsReducer.entities.filter((review) => review.roomId === roomId);

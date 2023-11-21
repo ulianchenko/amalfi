@@ -24,29 +24,29 @@ const SuccessBookingModal = ({ open, onClose, isLoading, bookingData }) => {
   };
 
   return (
-    <Modal title='Бронирование номера' open={open} onClose={onClose} isLoading={isLoading}>
+    <Modal title='Room booking' open={open} onClose={onClose} isLoading={isLoading}>
       <DialogContent>
         <div className='booking-modal__text'>
-          <h2>Номер успешно забронирован</h2>
+          <h2>Room successfully booked</h2>
           <CheckCircleIcon className='booking-modal__text-icon' />
         </div>
         <table className='booking-modal__info'>
           <tbody>
             <tr>
-              <td className='booking-modal__info-dateText'>Дата прибытия:</td>
+              <td className='booking-modal__info-dateText'>Arrival date:</td>
               <td className='booking-modal__info-date'>{dateArrival}</td>
             </tr>
             <tr>
-              <td className='booking-modal__info-dateText'>Дата выезда:</td>
+              <td className='booking-modal__info-dateText'>Departure date:</td>
               <td className='booking-modal__info-date'>{dateDeparture}</td>
             </tr>
           </tbody>
         </table>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleGoBack}>Назад</Button>
+        <Button onClick={handleGoBack}>Go back</Button>
         <Button onClick={handleGoMyBooking} variant='outlined'>
-          Мои бронирования
+          My bookings
         </Button>
       </DialogActions>
     </Modal>

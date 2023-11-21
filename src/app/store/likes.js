@@ -58,6 +58,13 @@ export const getLikesByReviewId = (reviewId) => (state) => {
   return [];
 };
 
+export const getLikesByUserId = (userId) => (state) => {
+  if (state.likesReducer.entities) {
+    return state.likesReducer.entities.filter(like => like.userId === userId);
+  }
+  return [];
+};
+
 export const createLike =
   (payload) =>
   async dispatch => {
