@@ -81,7 +81,7 @@ export const updateUserData =
   async dispatch => {
     dispatch(userUpdateRequested());
     try {
-      const content = await userService.updateUserData(payload);
+      const { content } = await userService.updateUserData(payload);
       dispatch(userUpdated(content));
     } catch (error) {
       dispatch(userUpdateRequestedFailed());
@@ -132,7 +132,7 @@ export const logOut = () => async dispatch => {
 export const loadUsersList = () => async (dispatch, getState) => {
   dispatch(usersRequested());
   try {
-    const content = await userService.getAll();
+    const { content } = await userService.getAll();
     dispatch(usersReceived(content));
   } catch (error) {
     dispatch(usersRequestFailed(error.message));

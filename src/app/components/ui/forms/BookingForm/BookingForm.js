@@ -96,7 +96,7 @@ const BookingForm = () => {
           disabled={Object.keys(errors).length > 0 || !!enterError}
           fullWidth
         >
-          Booking
+          Reserve
         </Button>
       </Form>
       {enterError && <p className='form__enter-error'>{enterError}</p>}

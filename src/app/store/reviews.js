@@ -49,7 +49,7 @@ const reviewRemoveRequestedFailed = createAction('reviews/reviewRemoveRequestedF
 export const loadReviewsList = () => async dispatch => {
   dispatch(reviewsRequested());
   try {
-    const content = await reviewsService.getAll();
+    const { content } = await reviewsService.getAll();
     dispatch(reviewsReceived(content || []));
   } catch (error) {
     reviewsRequestFailed(error);
@@ -61,7 +61,7 @@ export const createReview =
   async dispatch => {
     dispatch(reviewCreateRequested());
     try {
-      const content = await reviewsService.create(payload);
+      const { content } = await reviewsService.create(payload);
       dispatch(reviewCreated(content));
     } catch (error) {
       dispatch(reviewCreateRequestedFailed());
@@ -73,10 +73,10 @@ export const updateReview =
   async dispatch => {
     dispatch(reviewUpdateRequested());
     try {
-      const content = await reviewsService.update(payload);
+      const { content } = await reviewsService.update(payload);
       dispatch(reviewUpdated(content));
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       dispatch(reviewUpdateRequestedFailed());
     }
   };
@@ -86,6 +86,7 @@ export const removeReview =
   async dispatch => {
     dispatch(reviewRemoveRequested());
     try {
+      // console.log(reviewId);
       const id = await reviewsService.remove(reviewId);
       dispatch(reviewRemoved(id));
     } catch (error) {

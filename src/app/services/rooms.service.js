@@ -5,15 +5,16 @@ const roomsEndPoint = 'rooms/';
 
 const roomsService = {
   getAll: async (queryParams) => {
-    const data = await httpService.get(roomsEndPoint, queryParams);
+    console.log('roomService queryParams: ', queryParams);
+    const { data } = await httpService.get(roomsEndPoint, { params: { ...queryParams } });
     return data;
   },
   update: async (payload) => {
-    const data = await httpService.patch(roomsEndPoint + payload._id, payload);
+    const { data } = await httpService.patch(roomsEndPoint + payload._id, payload);
     return data;
   },
   setBooking: async (payload) => {
-    const data = await httpService.post(roomsEndPoint + payload.roomId, { bookings: payload._id });
+    const { data } = await httpService.post(roomsEndPoint + payload.roomId, { bookings: payload._id });
     return data;
   },
   deleteBooking: async (payload) => {

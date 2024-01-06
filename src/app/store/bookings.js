@@ -64,7 +64,7 @@ export const loadBookingsList = () => async (dispatch, getState) => {
   if (isOutDated(Number(lastFetch))) {
     dispatch(bookingsRequested());
     try {
-      const content = await bookingService.getAll();
+      const { content } = await bookingService.getAll();
       dispatch(bookingsReceived(content || []));
     } catch (error) {
       dispatch(bookingsRequestFailed(error.message));
@@ -77,18 +77,19 @@ export const createBooking =
   async dispatch => {
     dispatch(bookingCreateRequested());
     try {
-      const content = await bookingService.create(payload);
+      const { content } = await bookingService.create(payload);
       dispatch(bookingCreated(content));
       return content;
-    } catch (errorResponse) {
-      // if (error.response.status === 500) {
-      //   dispatch(bookingCreateRequestedFailed(error.response.data.message));
-      //   return;
-      // }
-      // const { message } = error.response.data.error;
-      // dispatch(bookingCreateRequestedFailed(error.message));
-      const { message } = errorResponse;
+    // } catch (errorResponse) {
+    } catch (error) {
+      if (error.response.status === 500) {
+        dispatch(bookingCreateRequestedFailed(error.response.data.message));
+        return;
+      }
+      const { message } = error.response.data.error;
       dispatch(bookingCreateRequestedFailed(message));
+      // const { message } = errorResponse;
+      // dispatch(bookingCreateRequestedFailed(message));
     }
   };
 

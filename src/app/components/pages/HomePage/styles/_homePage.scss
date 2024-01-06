@@ -12,7 +12,9 @@
 }
 
 .main__text-wishes {
-  color: $accent;
+  // color: $accent;
+  color: #fff;
+  mix-blend-mode: difference;
   margin-bottom: 20px;
   max-width: 300px;
   text-align: right;

@@ -50,7 +50,7 @@ const removeBookingRoomRequestedFailed = createAction('rooms/removeBookingRoomRe
 export const loadRoomsList = () => async dispatch => {
   dispatch(roomsRequested());
   try {
-    const content = await roomsService.getAll();
+    const { content } = await roomsService.getAll();
     dispatch(roomsReceived(content || []));
   } catch (error) {
     dispatch(roomsRequestFailed(error.message));
@@ -60,7 +60,8 @@ export const loadRoomsList = () => async dispatch => {
 export const loadFilteredRoomsList = (queryParams) => async dispatch => {
   dispatch(roomsRequested());
   try {
-    const content = await roomsService.getAll(queryParams);
+    console.log('queryParams: ', queryParams);
+    const { content } = await roomsService.getAll(queryParams);
     dispatch(filteredRoomsReceived(content || []));
   } catch (error) {
     dispatch(roomsRequestFailed(error.message));
@@ -72,10 +73,10 @@ export const updateRoomData =
   async dispatch => {
     dispatch(roomUpdateRequested());
     try {
-      const content = await roomsService.update(payload);
+      const { content } = await roomsService.update(payload);
       dispatch(roomUpdated(content));
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       dispatch(roomUpdateRequestedFailed());
     }
   };

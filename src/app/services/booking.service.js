@@ -4,11 +4,11 @@ const bookingEndPoint = 'booking/';
 
 const bookingService = {
   getAll: async () => {
-    const data = await httpService.get(bookingEndPoint);
+    const { data } = await httpService.get(bookingEndPoint);
     return data;
   },
   create: async (payload) => {
-    const data = await httpService.post(bookingEndPoint, payload);
+    const { data } = await httpService.post(bookingEndPoint, payload);
     return data;
   },
   remove: async (id) => {

@@ -44,25 +44,11 @@ const likeRemoveRequestedFailed = createAction('likes/likeRemoveRequestedFailed'
 export const loadLikesList = () => async (dispatch, getState) => {
   dispatch(likesRequested());
   try {
-    const content = await likesService.getAll();
+    const { content } = await likesService.getAll();
     dispatch(likesReceived(content));
   } catch (error) {
     dispatch(likesRequestFailed(error.message));
   }
-};
-
-export const getLikesByReviewId = (reviewId) => (state) => {
-  if (state.likesReducer.entities) {
-    return state.likesReducer.entities.filter(like => like.reviewId === reviewId);
-  }
-  return [];
-};
-
-export const getLikesByUserId = (userId) => (state) => {
-  if (state.likesReducer.entities) {
-    return state.likesReducer.entities.filter(like => like.userId === userId);
-  }
-  return [];
 };
 
 export const createLike =
@@ -70,7 +56,7 @@ export const createLike =
   async dispatch => {
     dispatch(likeCreateRequested());
     try {
-      const content = await likesService.create(payload);
+      const { content } = await likesService.create(payload);
       dispatch(likeCreated(content || []));
     } catch (error) {
       dispatch(likeCreateRequestedFailed());
@@ -93,5 +79,21 @@ export const removeLike =
       dispatch(likeRemoveRequestedFailed());
     }
   };
+
+
+  // selectors:
+export const getLikesByReviewId = (reviewId) => (state) => {
+  if (state.likesReducer.entities) {
+    return state.likesReducer.entities.filter(like => like.reviewId === reviewId);
+  }
+  return [];
+};
+
+export const getLikesByUserId = (userId) => (state) => {
+  if (state.likesReducer.entities) {
+    return state.likesReducer.entities.filter(like => like.userId === userId);
+  }
+  return [];
+};
 
 export default likesReducer;

@@ -4,11 +4,11 @@ const likesEndPoint = 'like/';
 
 const likesService = {
   getAll: async () => {
-    const data = await httpService.get(likesEndPoint);
+    const { data } = await httpService.get(likesEndPoint);
     return data;
   },
   create: async (payload) => {
-    const data = await httpService.post(likesEndPoint, payload);
+    const { data } = await httpService.post(likesEndPoint, payload);
     return data;
   },
   remove: async (id) => {

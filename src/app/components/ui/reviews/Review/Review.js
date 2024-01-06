@@ -17,7 +17,8 @@ import ReviewLikes from '../ReviewLikes';
 
 const Review = ({ review }) => {
   const dispatch = useDispatch();
-  const [content, setContent] = useState(null);
+  // const [content, setContent] = useState(null);
+  const [content, setContent] = useState(review.content);
   const [editMode, setEditMode] = useState(false);
   const currentRoomData = useSelector(getRoomById(review.roomId));
   const user = useSelector(getUserById(review.userId || ''));
@@ -36,7 +37,8 @@ const Review = ({ review }) => {
 
   const handleChangeReview = () => {
     setEditMode(false);
-    const payload = { _id: review._id, rating: review.rating, roomId: review.roomId, content: review.content };
+    // const payload = { _id: review._id, rating: review.rating, roomId: review.roomId, content: review.content };
+    const payload = { _id: review._id, rating: review.rating, roomId: review.roomId, content: content };
     dispatch(updateReview(payload));
   };
 
