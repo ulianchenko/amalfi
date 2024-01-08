@@ -17,7 +17,7 @@ const initialState = {
   canSmoke: false,
   canPets: false,
   canInvite: false,
-  hasWideCorridor: false,
+  hasWideHallway: false,
   hasDisabledAssistant: false,
   hasWifi: false,
   hasConditioner: false,
@@ -64,14 +64,14 @@ const RoomsFilter = ({ onReset }) => {
         </CheckboxList>
         <CheckboxList title='Accessibility'>
           <Checkbox
-            label='Wide corridor'
-            name='hasWideCorridor'
-            labelDetails='The corridor width is not less than 90 cm'
+            label='Wide hallway'
+            name='hasWideHallway'
+            labelDetails='The hallway width is not less than 90 cm'
           />
           <Checkbox
-            label='Assistant for the Disabled'
+            label='Accessibility assistant'
             name='hasDisabledAssistant'
-            labelDetails='An assistant will meet you on the first floor and escort you to your room'
+            labelDetails='An assistant will meet you on the first floor and escort to your room'
           />
         </CheckboxList>
         <Button type='button' onClick={handleResetFilters} fullWidth>

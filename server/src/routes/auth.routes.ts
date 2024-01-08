@@ -61,7 +61,6 @@ router.post('/signUp', [
       await tokenService.save(newUser._id, tokens.refreshToken);
       res.status(201).send({ ...tokens, userId: newUser._id });
     } catch (error) {
-      console.log('OOOPS, error:', error);
       res.status(500).json({
         message: 'An error has occurred on the server. Please, try again later',
       });

@@ -4,10 +4,17 @@ import config from 'config';
 
 
 const token = () => {
-  const generate = (payload: {_id: string}) => {
-    const accessToken = jwt.sign(payload, config.get('ACCESS_SECRET'), { algorithm: 'none', expiresIn: '1h'});
+  // const accessSecret = 'super secret from backend';
+  // const refreshSecret = 'super refresh key';
 
-    const refreshToken = jwt.sign(payload, config.get('REFRESH_SECRET'));
+  const generate = (payload: {_id: string}) => {
+    // const accessToken = jwt.sign(payload, config.get('ACCESS_SECRET'), { expiresIn: '1h' });
+    // const accessToken = jwt.sign(payload, accessSecret, { expiresIn: '1h' });
+    const accessToken = jwt.sign(payload, config.get('ACCESS_SECRET') || '', { expiresIn: '1h' });
+
+    // const refreshToken = jwt.sign(payload, config.get('REFRESH_SECRET'));
+    // const refreshToken = jwt.sign(payload, refreshSecret);
+    const refreshToken = jwt.sign(payload, config.get('REFRESH_SECRET') || '');
 
     return {
       accessToken,
@@ -28,7 +35,9 @@ const token = () => {
 
   const validateRefresh = (refreshToken: string) => {
     try {
-      return jwt.verify(refreshToken, config.get('REFRESH_SECRET'));
+      // return jwt.verify(refreshToken, config.get('REFRESH_SECRET'));
+      // return jwt.verify(refreshToken, refreshSecret);
+      return jwt.verify(refreshToken, config.get('REFRESH_SECRET') || '');
     } catch (error) {
       return null;
     }
@@ -36,7 +45,9 @@ const token = () => {
 
   const validateAccess = (accessToken: string) => {
     try {
-      return jwt.verify(accessToken, config.get('ACCESS_SECRET'));
+      // return jwt.verify(accessToken, config.get('ACCESS_SECRET'));
+      // return jwt.verify(accessToken, accessSecret);
+      return jwt.verify(accessToken, config.get('ACCESS_SECRET') || '');
     } catch (error) {
       return null;
     }

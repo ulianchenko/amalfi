@@ -28,11 +28,11 @@ const BookingForm = () => {
   const { isOpen, handleOpenModal, handleCloseModal } = useModal();
 
   const initialData = {
-    arrivalDate: searchQueryData.arrivalDate || Date.now(),
-    departureDate: searchQueryData.departureDate || Date.now() + oneDayMs,
-    adults: searchQueryData.adults || 1,
-    children: searchQueryData.children || 0,
-    babies: searchQueryData.babies || 0,
+    arrivalDate: searchQueryData?.arrivalDate || Date.now(),
+    departureDate: searchQueryData?.departureDate || Date.now() + oneDayMs,
+    adults: searchQueryData?.adults || 1,
+    children: searchQueryData?.children || 0,
+    babies: searchQueryData?.babies || 0,
     userId: currentUserId || 'not found',
     roomId: roomId,
     totalPrice: 0,

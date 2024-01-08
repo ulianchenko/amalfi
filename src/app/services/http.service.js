@@ -101,7 +101,6 @@ http.interceptors.request.use(
 
     const isExpired = refreshToken && Number(expiresDate) < Date.now();
     if (isExpired) {
-      console.log('isExpired');
       const data = await authService.refresh();
       localStorageService.setTokens(data);
     }
@@ -135,7 +134,6 @@ http.interceptors.response.use(
   function (error) {
     const expectedErrors = error.response && error.response.status >= 400 && error.response.status < 500;
     if (!expectedErrors) {
-      console.log(error);
       toast.error('Something was wrong. Try it later');
     }
     return Promise.reject(error);

@@ -15,7 +15,7 @@ export interface IRoom extends Document {
   canSmoke?: boolean;
   canPets?: boolean;
   canInvite?: boolean;
-  hasWideCorridor?: boolean;
+  hasWideHallway?: boolean;
   hasDisabledAssistant?: boolean;
 };
 
@@ -34,7 +34,7 @@ const roomSchema: Schema = new Schema<IRoom>({
   canSmoke: Boolean,
   canPets: Boolean,
   canInvite: Boolean,
-  hasWideCorridor: Boolean,
+  hasWideHallway: Boolean,
   hasDisabledAssistant: Boolean
 });
 

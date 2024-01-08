@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import Rating from '../../Rating';
 
+// const labels = {
+//   'Disappoint':  1,
+//   'Satisfactorily': 2,
+//   'Well': 3,
+//   'Very well': 4,
+//   'Excellent': 5,
+// }
 const labels = {
-  'Disappoint':  1,
-  'Satisfactorily': 2,
-  'Well': 3,
-  'Very well': 4,
-  'Excellent': 5,
+  1: 'Disappoint',
+  2: 'Satisfactorily',
+  3: 'Well',
+  4: 'Very well',
+  5: 'Excellent'
 }
 
 const RatingField = ({ name, label, value, onChange, ...rest }) => {

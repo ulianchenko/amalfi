@@ -33,13 +33,10 @@ function useForm(initialData, validateOnChange, validatorConfig) {
     if (event.keyCode === 13) {
       event.preventDefault();
       const form = event.target.form;
-      console.log(form);
       const formElements = [...form.elements].filter(
         el => el.tagName.toLowerCase() === 'input' || el.tagName.toLowerCase() === 'button'
       );
-      console.log(formElements);
       const indexField = Array.prototype.indexOf.call(formElements, event.target);
-      console.log(indexField);
       formElements[indexField + 1].focus();
     }
   }, []);

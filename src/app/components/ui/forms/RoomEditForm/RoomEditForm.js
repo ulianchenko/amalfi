@@ -26,7 +26,7 @@ const RoomEditForm = ({ roomData, onCloseModal }) => {
     canPets: roomData?.canPets || false,
     canSmoke: roomData?.canSmoke || false,
     canInvite: roomData?.canInvite || false,
-    hasWideCorridor: roomData?.hasWideCorridor || false,
+    hasWideHallway: roomData?.hasWideHallway || false,
     hasDisabledAssistant: roomData?.hasDisabledAssistant || false,
   };
 
@@ -56,14 +56,14 @@ const RoomEditForm = ({ roomData, onCloseModal }) => {
         </CheckboxList>
         <CheckboxList>
           <Checkbox
-            label='Wide corridor'
-            name='hasWideCorridor'
-            labelDetails='The corridor width is not less than 90 cm'
+            label='Wide hallway'
+            name='hasWideHallway'
+            labelDetails='The hallway width is not less than 90 cm'
           />
           <Checkbox
-            label='Assistant for the Disabled'
+            label='Accessibility assistant'
             name='hasDisabledAssistant'
-            labelDetails='An assistant will meet you on the first floor and escort you to your room'
+            labelDetails='An assistant will meet you on the first floor and escort to your room'
           />
         </CheckboxList>
 

@@ -16,7 +16,6 @@ const BookingTableRow = ({ row }) => {
   const dispatch = useDispatch();
 
   const handleRemoveBooking = () => {
-    console.log('Remove booking with id: ', row._id);
     dispatch(removeBooking(row._id));
     dispatch(removeBookingRoom({ roomId: row.roomId, _id: row._id || '' }));
   };

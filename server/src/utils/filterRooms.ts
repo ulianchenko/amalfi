@@ -21,7 +21,7 @@ export interface IRoomQuery {
   canSmoke?: string;
   canPets?: string;
   canInvite?: string;
-  hasWideCorridor?: string;
+  hasWideHallway?: string;
   hasDisabledAssistant?: string;
   arrivalDate?: number;
   departureDate?: number;
@@ -69,8 +69,8 @@ const filterRooms = async (items: IRoom[], filters: IRoomQuery) => {
     filteredItems = filteredItems.filter(room => room.canInvite);
   }
 
-  if (filters.hasWideCorridor) {
-    filteredItems = filteredItems.filter(room => room.hasWideCorridor);
+  if (filters.hasWideHallway) {
+    filteredItems = filteredItems.filter(room => room.hasWideHallway);
   }
 
   if (filters.hasDisabledAssistant) {

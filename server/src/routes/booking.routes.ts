@@ -51,6 +51,7 @@ router.post('/', auth, async (req: Request, res: Response): Promise<void> => {
   }
 });
 
+// router.delete('/:bookingId', auth, async (req: Request, res: Response): Promise<Response<any, Record<string, any>> | void> => {
 router.delete('/:bookingId', auth, async (req: Request, res: Response): Promise<Response<any, Record<string, any>> | void> => {
   try {
     const { bookingId } = req.params;
@@ -62,7 +63,9 @@ router.delete('/:bookingId', auth, async (req: Request, res: Response): Promise<
       // await removedBooking?.remove();
       await removedBooking?.deleteOne();
       // return res.send(null);
-      return res.send(removedBooking);
+      // return res.send(removedBooking);
+      res.send(removedBooking);
+      return;
       // return res.json(removedBooking);
     } else {
       res.status(401).json({

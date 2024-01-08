@@ -6,30 +6,31 @@ import auth from '../middlewares/auth.middleware';
 
 const router = express.Router({ mergeParams: true });
 
-router.get('/', async (req: Request, res: Response): Promise<Response<any, Record<string, any>> | void> => {
+// router.get('/', async (req: Request, res: Response): Promise<Response<any, Record<string, any>> | void> => {
+router.get('/', async (req: Request, res: Response): Promise<void> => {
   const query: ParsedQs = req.query;
-  console.log('query: ', query)
   try {
     const rooms: IRoom[] = await Room.find();
     if (Object.keys(query).length > 0) {
       const filteredRooms: IRoom[] | undefined  = await filterRooms(rooms, query);
-      return res.status(200).send(filteredRooms);
+      // return res.status(200).send(filteredRooms);
+      res.status(200).send(filteredRooms);
+      return;
     }
 
     res.status(200).send(rooms);
     // res.status(200).json(rooms);
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       message: 'An error has occurred on the server. Please, try again later',
     });
   }
 });
 
-router.get('/:roomId', async (req: Request, res: Response): Promise<Response<any, Record<string, any>> | void> => {
+router.get('/:roomId', async (req: Request, res: Response): Promise<void> => {
   const { roomId } = req.params;
   try {
-    const room = await Room.findById(roomId);
+    const room: IRoom | null = await Room.findById(roomId);
     res.send(room);
     // res.json(room);
   } catch (error) {
@@ -39,7 +40,7 @@ router.get('/:roomId', async (req: Request, res: Response): Promise<Response<any
   }
 });
 
-router.post('/:roomId', auth, async (req: Request, res: Response): Promise<Response<any, Record<string, any>> | void> => {
+router.post('/:roomId', auth, async (req: Request, res: Response): Promise<void> => {
   try {
     const { roomId } = req.params;
     const room: IRoom | null = await Room.findById(roomId);
@@ -59,7 +60,7 @@ router.post('/:roomId', auth, async (req: Request, res: Response): Promise<Respo
   }
 });
 
-router.patch('/:roomId', auth, async (req: Request, res: Response): Promise<Response<any, Record<string, any>> | void> => {
+router.patch('/:roomId', auth, async (req: Request, res: Response): Promise<void> => {
   try {
     const { roomId } = req.params;
     const updatedRoom: IRoom | null = await Room.findByIdAndUpdate(roomId, req.body, { new: true });

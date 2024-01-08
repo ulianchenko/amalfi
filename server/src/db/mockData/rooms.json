@@ -14,7 +14,7 @@
     "canSmoke": true,
     "canPets": true,
     "canInvite": true,
-    "hasWideCorridor": true,
+    "hasWideHallway": true,
     "hasDisabledAssistant": true,
     "comforts": ["hasWifi", "hasConditioner", "hasWorkSpace"]
   },

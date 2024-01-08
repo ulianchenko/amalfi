@@ -5,7 +5,6 @@ const roomsEndPoint = 'rooms/';
 
 const roomsService = {
   getAll: async (queryParams) => {
-    console.log('roomService queryParams: ', queryParams);
     const { data } = await httpService.get(roomsEndPoint, { params: { ...queryParams } });
     return data;
   },

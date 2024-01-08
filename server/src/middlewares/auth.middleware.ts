@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { JwtPayload } from 'jsonwebtoken';
-import User from '../models/User';
+import User, { IUser } from '../models/User';
 import tokenService from '../services/token.service';
 
 
@@ -18,7 +18,7 @@ const auth =  async ( req: Request, res: Response, next: NextFunction): Promise<
     }
 
     const data: string | JwtPayload | null= tokenService.validateAccess(token);
-    const currentUserData = await User.findById(data);
+    const currentUserData: IUser | null = await User.findById(data);
 
     req.body.user = data;
     req.body.userRole = currentUserData?.role || '';

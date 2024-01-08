@@ -16,7 +16,6 @@ const reviewsService = {
     return data;
   },
   remove: async (id) => {
-    // console.log(id);
     await httpService.delete(reviewsEndPoint + id);
     return id;
   },

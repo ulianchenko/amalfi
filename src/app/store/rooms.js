@@ -60,7 +60,6 @@ export const loadRoomsList = () => async dispatch => {
 export const loadFilteredRoomsList = (queryParams) => async dispatch => {
   dispatch(roomsRequested());
   try {
-    console.log('queryParams: ', queryParams);
     const { content } = await roomsService.getAll(queryParams);
     dispatch(filteredRoomsReceived(content || []));
   } catch (error) {
@@ -76,7 +75,6 @@ export const updateRoomData =
       const { content } = await roomsService.update(payload);
       dispatch(roomUpdated(content));
     } catch (error) {
-      // console.log(error);
       dispatch(roomUpdateRequestedFailed());
     }
   };

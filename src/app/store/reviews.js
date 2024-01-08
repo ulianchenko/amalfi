@@ -76,7 +76,6 @@ export const updateReview =
       const { content } = await reviewsService.update(payload);
       dispatch(reviewUpdated(content));
     } catch (error) {
-      // console.log(error);
       dispatch(reviewUpdateRequestedFailed());
     }
   };
@@ -86,7 +85,6 @@ export const removeReview =
   async dispatch => {
     dispatch(reviewRemoveRequested());
     try {
-      // console.log(reviewId);
       const id = await reviewsService.remove(reviewId);
       dispatch(reviewRemoved(id));
     } catch (error) {
