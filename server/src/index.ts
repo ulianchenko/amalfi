@@ -2,6 +2,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import config from 'config';
 import dotenv from 'dotenv';
+import Stripe from 'stripe';
 // import  mongoose, { Document, Model, Schema, model } from 'mongoose';
 
 // import swaggerUi from 'swagger-ui-express';
@@ -16,6 +17,8 @@ const app = express();
 dotenv.config();
 const PORT = process.env.PORT || config.get('port') || 8080;
 // const PORT: number = 8080;
+const stripeObj = new Stripe('sk_test_51OWkH4GKmalhlFM413SZO0W54WMJKhMYB1lRE7eNRyzHFsR3SriI1rGRVwVhLRcvnKF2A9KSHABfL0fHIvR7zjXc00ii850ogO');
+const DOMAIN_NAME = 'http://localhost:3000';
 
 initDatabase();
 
@@ -34,6 +37,37 @@ app.use('/api', routes);
 // app.get('/', (req: Request, res: Response): void => {
 //   res.send('Hello World!');
 // });
+
+app.post('/create-checkout-session', async (req, res) => {
+  const session = await stripeObj.checkout.sessions.create({
+    // ui_mode: 'embedded',
+    line_items: [
+      {
+        // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+        price: 'price_1OX4MIGKmalhlFM45nyYlosE',
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    // return_url: `${DOMAIN_NAME}/return?session_id={CHECKOUT_SESSION_ID}`,
+    // success_url: `${DOMAIN_NAME}?success=true`,
+    success_url: `${DOMAIN_NAME}/return`,
+    cancel_url: `${DOMAIN_NAME}?canceled=true`,
+  });
+
+  // res.send({clientSecret: session.client_secret});
+  res.redirect(303, String(session.url));
+});
+
+app.get('/session-status', async (req, res) => {
+  const sessionId = String(req.query.session_id);
+  const session = await stripeObj.checkout.sessions.retrieve(sessionId);
+
+  res.send({
+    status: session.status,
+    customer_email: session?.customer_details?.email
+  });
+});
 
 // Middleware for handling 404 error
 app.use((req: Request, res: Response): void => {

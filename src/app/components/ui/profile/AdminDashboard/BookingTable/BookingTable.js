@@ -11,6 +11,7 @@ const BookingTable = ({ bookings, roomNumber }) => {
     { id: 'totalPrice', label: 'Price', numeric: true },
   ];
   return (
+      bookings.length > 0 ?
     <>
       <h3 style={{ margin: 10 }}>{`Bookings list of room #${roomNumber}`}</h3>
       <Table size='small' aria-label='purchases'>
@@ -21,7 +22,7 @@ const BookingTable = ({ bookings, roomNumber }) => {
           ))}
         </TableBody>
       </Table>
-    </>
+    </> : <></>
   );
 };
 

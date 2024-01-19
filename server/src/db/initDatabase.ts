@@ -18,9 +18,9 @@ const initDatabase = (): void => {
     if (roomsCount === 0) {
       try {
         await Room.insertMany(roomsMockData);
-        console.log('Movies database was uploaded from mock data');
+        console.log('Database was uploaded from mock data');
       } catch (err) {
-        console.error('Error uploading movies database from mock data');
+        console.error('Error uploading database from mock data');
       }
     }
   });

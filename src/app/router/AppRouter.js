@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Main from '../layouts/main'
 import Page404 from '../components/pages/Page404';
+import CheckoutPage from '../components/pages/CheckoutPage';
+import CheckoutReturnPage from '../components/pages/CheckoutReturnPage';
 import { getIsLoggedIn } from '../store/users';
 
 
@@ -12,6 +14,8 @@ export const navigationRoutes = [
   { path: '/vacancy', name: 'Vacancy' },
   { path: '/news', name: 'News' },
   { path: '/agreement', name: 'Agreement' },
+  // { path: '/checkout', name: 'Checkout' },
+  // { path: '/return', name: 'CheckoutReturn' },
 ];
 
   const AppRouter = () => {
@@ -34,7 +38,7 @@ export const navigationRoutes = [
               </Route> : null
             }
             <Route path='/' element={<Main />} />
-            <Route path='/rooms' element={<Rooms/>} >
+            <Route path='/rooms' element={<Rooms />} >
               <Route path=':roomId' element={<Rooms />} />
             </Route>
             {/* <Route path='/rooms/:roomId' element={<Rooms />} /> */}
@@ -45,6 +49,8 @@ export const navigationRoutes = [
             <Route path='/profile' element={<Profile />} >
               <Route path=':userId' element={<Profile />} />
             </Route> : null } */}
+            <Route path='/checkout' element={<CheckoutPage />} />
+            <Route path='/return' element={<CheckoutReturnPage />} />
             <Route path='*' element={<Page404 />} />
           </Routes>
         </Suspense>

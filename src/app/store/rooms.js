@@ -29,12 +29,16 @@ const roomsSlice = createSlice({
       const roomIndex = state.entities.findIndex(room => room._id === action.payload._id);
       state.entities[roomIndex] = action.payload;
     },
+    roomAddBooking: (state, action) => {
+      const roomIndex = state.entities.findIndex(room => room._id === action.payload.roomId);
+      state.entities[roomIndex].bookings.push(action.payload._id);
+    },
   },
 });
 
 const { actions, reducer: roomsReducer } = roomsSlice;
 
-const { roomsRequested, roomsReceived, roomsRequestFailed, filteredRoomsReceived, roomUpdated } = actions;
+const { roomsRequested, roomsReceived, roomsRequestFailed, filteredRoomsReceived, roomUpdated, roomAddBooking } = actions;
 
 const addBookingRoomRequested = createAction('rooms/addBookingRoomRequested');
 const addBookingRoomRequestedSuccess = createAction('rooms/addBookingRoomRequestedSuccess');
@@ -84,6 +88,7 @@ export const addBookingRoom =
   async dispatch => {
     dispatch(addBookingRoomRequested());
     try {
+      dispatch(roomAddBooking(payload));
       roomsService.setBooking(payload);
       dispatch(addBookingRoomRequestedSuccess());
     } catch (error) {

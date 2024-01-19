@@ -16,6 +16,8 @@ const SuccessBookingModal = ({ open, onClose, isLoading, bookingData }) => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
+    // navigate('/rooms');
+    // navigate({pathname: '/rooms', search: ''});
     navigate(-1);
   };
 

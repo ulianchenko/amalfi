@@ -1,0 +1,16 @@
+.checkoutReturnPage__main {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkoutReturnPage__title {
+  font-size: $text-lg;
+  margin-bottom: 20px;
+}
+
+.checkoutReturnPage__success {
+  margin-bottom: 20px;
+}

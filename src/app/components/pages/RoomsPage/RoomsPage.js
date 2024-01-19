@@ -21,6 +21,7 @@ const setPageSizeOptions = [
 const RoomsPage = () => {
   const dispatch = useDispatch();
 
+
   const rooms = useSelector(getFilteredRooms());
   const roomsIsLoading = useSelector(getRoomsLoadingStatus());
 

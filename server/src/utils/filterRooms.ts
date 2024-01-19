@@ -37,9 +37,9 @@ const filterRooms = async (items: IRoom[], filters: IRoomQuery) => {
   const bookedRoomsIds = bookings
     .filter(
       booking =>
-        dayjs(filters.arrivalDate).isBetween(booking.arrivalDate, booking.departureDate) ||
-        dayjs(filters.departureDate).isBetween(booking.arrivalDate, booking.departureDate) ||
-        dayjs(booking.arrivalDate).isBetween(filters.arrivalDate, filters.departureDate)
+        dayjs(filters.arrivalDate).isBetween(dayjs(booking.arrivalDate), dayjs(booking.departureDate)) ||
+        dayjs(filters.departureDate).isBetween(dayjs(booking.arrivalDate), dayjs(booking.departureDate)) ||
+        dayjs(booking.arrivalDate).isBetween(dayjs(filters.arrivalDate), dayjs(filters.departureDate))
     )
     .map(booking => booking.roomId.toString());
 
