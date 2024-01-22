@@ -16,9 +16,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.2",
     "config": "^3.3.9",
-    "date-fns": "^2.30.0",
     "dayjs": "^1.11.7",
-    "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
@@ -55,8 +53,6 @@
     ]
   },
   "devDependencies": {
-    "@types/config": "^3.3.3",
-    "@types/jsonwebtoken": "^9.0.5",
     "sass": "^1.58.3"
   }
 }

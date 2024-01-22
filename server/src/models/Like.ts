@@ -1,11 +1,11 @@
-import  { Document, Model, Schema, Types, model } from 'mongoose';
+import  { Document, Model, Schema, model } from 'mongoose';
 
 export interface ILike extends Document {
   reviewId: string;
   userId: string;
   created_at?: Date;
   updated_at?: Date;
-};
+}
 
 const likeSchema: Schema = new Schema<ILike>(
   {

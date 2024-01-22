@@ -8,9 +8,17 @@ const stripePromise = loadStripe('pk_test_51OWkH4GKmalhlFM42uJqMFPhnjlITHw2L79ia
 const CheckoutForm = () => {
   const [clientSecret, setClientSecret] = useState('');
 
+  // useEffect(() => {
+  //   // Create a Checkout Session as soon as the page loads
+  //   fetch('http://localhost:8080/create-checkout-session', {
+  //     method: 'POST',
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setClientSecret(data.clientSecret));
+  // }, []);
   useEffect(() => {
     // Create a Checkout Session as soon as the page loads
-    fetch('http://localhost:8080/create-checkout-session', {
+    fetch('https://amalfi-server.onrender.com/create-checkout-session', {
       method: 'POST',
     })
       .then((res) => res.json())

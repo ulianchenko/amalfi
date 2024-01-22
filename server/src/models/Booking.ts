@@ -11,7 +11,7 @@ export interface IBooking extends Document {
   userId: Types.ObjectId;
   totalPrice: number;
   expires_at?: number;
-};
+}
 
 const bookingSchema: Schema = new Schema<IBooking>({
   adults: { type: Number, required: true },

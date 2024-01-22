@@ -1,16 +1,16 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { Container } from '@mui/material';
-import Button from '../../common/Button';
+// import Button from '../../common/Button';
 import Footer from '../../common/Footer';
 import Header from '../../common/Header';
 import CheckoutForm from '../../ui/forms/CheckoutForm';
 
 const CheckoutPage = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleGoHome = () => {
-    navigate('/');
-  };
+  // const handleGoHome = () => {
+  //   navigate('/');
+  // };
 
   return (
     <>
@@ -23,7 +23,9 @@ const CheckoutPage = () => {
           Home page
         </Button> */}
       </main>
-      <form action="http://localhost:8080/create-checkout-session" method="POST">
+      {/* <form action="http://localhost:8080/create-checkout-session" method="POST"> */}
+      {/* <form action="https://amalfi-server.onrender.com/create-checkout-session" method="POST"> */}
+      <form action="/create-checkout-session" method="POST">
       <button type="submit">
         Checkout
       </button>

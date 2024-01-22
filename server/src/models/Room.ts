@@ -17,7 +17,7 @@ export interface IRoom extends Document {
   canInvite?: boolean;
   hasWideHallway?: boolean;
   hasDisabledAssistant?: boolean;
-};
+}
 
 const roomSchema: Schema = new Schema<IRoom>({
   roomNumber: { type: Number, required: true},
