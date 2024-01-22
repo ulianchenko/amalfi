@@ -8,8 +8,8 @@ import Footer from '../../common/Footer';
 import Header from '../../common/Header';
 
 const CheckoutReturnPage = () => {
-  const [status, setStatus] = useState(null);
-  const [customerEmail, setCustomerEmail] = useState('');
+  // const [status, setStatus] = useState(null);
+  // const [customerEmail, setCustomerEmail] = useState('');
   const [message, setMessage] = useState('');
 
   const navigate = useNavigate();
@@ -41,6 +41,7 @@ const CheckoutReturnPage = () => {
         "Order canceled -- continue to shop around and checkout when you're ready."
       );
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleGoHome = () => {

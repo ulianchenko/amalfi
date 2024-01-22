@@ -16,9 +16,17 @@ const CheckoutForm = () => {
   //     .then((res) => res.json())
   //     .then((data) => setClientSecret(data.clientSecret));
   // }, []);
+  // useEffect(() => {
+  //   // Create a Checkout Session as soon as the page loads
+  //   fetch('https://amalfi-server.onrender.com/create-checkout-session', {
+  //     method: 'POST',
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setClientSecret(data.clientSecret));
+  // }, []);
   useEffect(() => {
     // Create a Checkout Session as soon as the page loads
-    fetch('https://amalfi-server.onrender.com/create-checkout-session', {
+    fetch('https://amalfi-api.onrender.com/create-checkout-session', {
       method: 'POST',
     })
       .then((res) => res.json())
