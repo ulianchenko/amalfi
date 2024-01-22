@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import queryString from 'query-string';
 import { Container } from '@mui/material';
 // import CircularProgress from '@mui/material/CircularProgress';
 import Button from '../../common/Button';
@@ -14,6 +15,7 @@ const CheckoutReturnPage = () => {
 
   const navigate = useNavigate();
   const { search } = useLocation();
+  const searchParsed = queryString.parse(search, { parseBooleans: true });
 
   // useEffect(() => {
   //   const queryString = window.location.search;
@@ -32,11 +34,11 @@ const CheckoutReturnPage = () => {
     // Check to see if this is a redirect back from Checkout
     // const query = new URLSearchParams(window.location.search);
 
-    if (search.get("success")) {
+    if (searchParsed.success) {
       setMessage("Order placed! You will receive an email confirmation.");
     }
 
-    if (search.get("canceled")) {
+    if (searchParsed.canceled) {
       setMessage(
         "Order canceled -- continue to shop around and checkout when you're ready."
       );
