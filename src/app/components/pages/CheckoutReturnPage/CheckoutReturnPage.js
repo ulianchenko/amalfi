@@ -25,12 +25,12 @@ const CheckoutReturnPage = () => {
       navigate('/404', { replace: true });
     }
     // if (searchParsed.success) {
-    if (state && state.success === 'true') {
+    if (state.success === 'true') {
       setMessage("Order placed! You will receive an email confirmation.");
     }
 
     // if (searchParsed.canceled) {
-    if (state && state.success === 'false') {
+    if (state.success === 'false') {
       setMessage(
         "Order canceled -- continue to shop around and checkout when you're ready."
       );
