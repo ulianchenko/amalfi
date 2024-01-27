@@ -185,7 +185,7 @@ const CheckoutPage = () => {
           </>
         ) : (
           <>
-            <form action="https://amalfi-api.onrender.com/create-checkout-session" method="POST">
+            <form action="https://amalfi-api.onrender.com/api/create-checkout-session" method="POST">
               {/* <button type="submit">
                 Checkout
               </button> */}
