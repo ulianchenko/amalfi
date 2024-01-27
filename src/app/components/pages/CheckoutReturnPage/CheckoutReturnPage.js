@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useLocation, Navigate } from 'react-router-dom';
+// import { useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 // import queryString from 'query-string';
 import { Container } from '@mui/material';
 import Button from '../../common/Button';
@@ -16,8 +17,13 @@ const CheckoutReturnPage = () => {
   // const { search } = useLocation();
   // const searchParsed = queryString.parse(search, { parseBooleans: true });
   const { state } = useLocation();
+  console.log(state);
 
   useEffect(() => {
+
+    if (!state) {
+      navigate('/404', { replace: true });
+    }
     // if (searchParsed.success) {
     if (state && state.success === 'true') {
       setMessage("Order placed! You will receive an email confirmation.");
@@ -56,8 +62,8 @@ const CheckoutReturnPage = () => {
               </>
 
             ) : (
-              <Navigate to="/404" replace={true} />
-              // <Backdrop open={true} />
+              // <Navigate to="/404" replace={true} />
+              <Backdrop open={true} />
             )
           }
         </main>
