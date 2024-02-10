@@ -47,9 +47,16 @@ const SuccessBookingModal = ({ open, onClose, isLoading, bookingData }) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleGoBack}>Go back</Button>
-        <Button onClick={handleGoMyBooking} variant='outlined'>
-          My bookings
-        </Button>
+        {
+          currentUserId ? (
+
+          <Button onClick={handleGoMyBooking} variant='outlined'>
+            My bookings
+          </Button>
+          ):(
+            <></>
+          )
+        }
       </DialogActions>
     </Modal>
   );

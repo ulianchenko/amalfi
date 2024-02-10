@@ -40,3 +40,7 @@ export default function useSort(items, initialSortBy) {
 
   return { sortedItems, sortBy, setSortBy, handleRequestSort };
 }
+
+
+console.log([] < [3]);
+console.log('' < '3');

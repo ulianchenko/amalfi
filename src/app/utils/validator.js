@@ -50,14 +50,15 @@ export function validator(data, validatorConfig) {
     }
     if (statusValidate) return config.message;
   }
-
+  //         email
   for (const fieldName in data) {
     for (const validateMethod in validatorConfig[fieldName]) {
       const error = validate(validateMethod, data[fieldName], validatorConfig[fieldName][validateMethod]);
+      //            validate(isRequired,     '',              {message: 'e-mail is required'}
       if (error && !errors[fieldName]) {
         errors[fieldName] = error;
       }
     }
   }
-  return errors;
+  return errors; // {email: {message: 'e-mail is required'}}
 }

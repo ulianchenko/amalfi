@@ -7,7 +7,7 @@ import Header from '../../common/Header';
 import configFile from '../../../config.json';
 
 // For checkout with Moneris payment set moneris to true
-const moneris = true;
+const moneris = false;
 
 const getPaymentTicket = async () => {
   let preloadRequest = {
@@ -185,7 +185,7 @@ const CheckoutPage = () => {
           </>
         ) : (
           <>
-            <form action="https://amalfi-api.onrender.com/api/create-checkout-session" method="POST">
+            <form action="http://localhost:8080/api/create-checkout-session" method="POST">
               {/* <button type="submit">
                 Checkout
               </button> */}

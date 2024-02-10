@@ -43,9 +43,9 @@ const BookingForm = () => {
   const countDays = Math.max(1, Math.round((data.departureDate - data.arrivalDate) / oneDayMs));
 
   useEffect(() => {
-    if (!currentUserId) {
-      setEnterError('Sign in to book a room');
-    }
+    // if (!currentUserId) {
+    //   setEnterError('Sign in to book a room');
+    // }
     if (bookingError) {
       if (bookingError === 'BOOKING_EXIST') {
         setEnterError('The room is booked for the dates you have chosen');

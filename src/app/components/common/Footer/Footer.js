@@ -16,7 +16,7 @@ const Footer = () => {
             <div className='footer-logo'>
               <Logo />
               <p className='footer-logo__text'>
-                Booking rooms in the best hotel of 2023 according to the International Hotels Association
+                Booking rooms in the best hotel of 2024 according to the International Hotels Association
               </p>
             </div>
           </div>
@@ -35,7 +35,7 @@ const Footer = () => {
       <Divider variant='fullWidth' className='footer-divider' />
       <Container>
         <div className='footer-bottom'>
-          <p className='footer-copyright'>Copyright © 2023 AMALFI HOTEL. All right reserved.</p>
+          <p className='footer-copyright'>Copyright © 2024 AMALFI HOTEL. All right reserved.</p>
           <Link underline='none' href='https://github.com/ulianchenko/amalfi' rel='noopener noreferrer' target='_blank'>
             <div className='footer-social'>
               <GitHub />
