@@ -17,7 +17,6 @@ const App = () => {
   const usersStatusLoading = useSelector(getUsersLoadingStatus());
 
   useEffect(() => {
-    console.log('useEffect loaded');
     dispatch(loadUsersList());
     dispatch(loadRoomsList());
     dispatch(loadLikesList());

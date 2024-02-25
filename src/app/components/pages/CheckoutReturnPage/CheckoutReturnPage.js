@@ -36,7 +36,7 @@ const CheckoutReturnPage = () => {
       );
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [message]);
 
   const handleGoHome = () => {
     navigate('/');

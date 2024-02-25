@@ -1,3 +1,20 @@
 {
-  "apiEndPoint": "http://localhost:8080/api"
+  "apiEndPoint": "http://localhost:8080/api/",
+  "monerisGateway": true,
+  "moneris": {
+    "store_id": "moneris",
+    "api_token": "hurgle",
+    "checkout_id": "chkt5BF66neris",
+    "environment": "qa",
+    "action": "receipt",
+    "routes": {
+      "ticket": "moneris-ticket",
+      "receipt": "moneris-receipt"
+    }
+  },
+  "stripe": {
+    "routes": {
+      "checkout": "create-checkout-session"
+    }
+  }
 }

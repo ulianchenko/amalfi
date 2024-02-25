@@ -4,6 +4,7 @@ import { Button as MuiButton } from '@mui/material';
 const Button = ({ size, color, variant, onClick, type, rounded, children, ...rest }) => {
   return (
     <MuiButton
+      type={type || 'text'}
       variant={variant || 'contained'}
       size={size || 'large'}
       color={color || 'primary'}
