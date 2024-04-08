@@ -2,8 +2,10 @@ import { Paper } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { removeSessionStorageBooking } from '../../../../services/sessionStorage.service';
 import { removeBooking } from '../../../../store/bookings';
 import { getRoomById, removeBookingRoom } from '../../../../store/rooms';
+import { getCurrentUserId } from '../../../../store/users';
 import { getDateDDMMYYYY } from '../../../../utils/formatDate';
 import Button from '../../../common/Button';
 import { getGuestsLabel } from '../../GuestsCounter/GuestsCounter';
@@ -21,10 +23,14 @@ const BookingCard = ({
 }) => {
   const dispatch = useDispatch();
   const room = useSelector(getRoomById(roomId));
+  const currentUserId = useSelector(getCurrentUserId());
 
   const handleRemoveBooking = () => {
     dispatch(removeBooking(_id));
     dispatch(removeBookingRoom({ roomId, _id: _id || '' }));
+    if (!currentUserId) {
+      removeSessionStorageBooking(_id);
+    }
   };
 
   return (

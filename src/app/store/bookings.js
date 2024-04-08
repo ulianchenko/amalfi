@@ -98,6 +98,7 @@ export const removeBooking =
   async dispatch => {
     dispatch(removeBookingRequested());
     try {
+      console.log('store remove bookingId: ', bookingId);
       const id = await bookingService.remove(bookingId || '');
       dispatch(bookingRemoved(id));
     } catch (error) {

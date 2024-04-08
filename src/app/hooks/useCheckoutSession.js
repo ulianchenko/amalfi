@@ -4,10 +4,16 @@ import monerisPreloadRequest from '../mockData/monerisPreloadRequest.json';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const useCheckoutSession = async () => {
+const useCheckoutSession = async (totalPrice) => {
   const [isPaymentComplete, setIsPaymentComplete] = useState(false);
   const [paymentReceipt, setPaymentReceipt] = useState({});
   const navigate = useNavigate();
+  console.log('monerisPreloadRequest: ', monerisPreloadRequest);
+  // const preloadRequestData = JSON.parse(monerisPreloadRequest);
+  // monerisPreloadRequest.txn_total = totalPrice;
+  monerisPreloadRequest.txn_total = totalPrice.toFixed(2).toString();
+  monerisPreloadRequest.cart.subtotal = (totalPrice / (100 + parseFloat(monerisPreloadRequest.cart.tax.rate)) * 100).toFixed(2).toString();
+  monerisPreloadRequest.cart.tax.amount = (totalPrice - monerisPreloadRequest.cart.subtotal).toFixed(2).toString();
   try {
     window.onload = function () {
       console.log("start");
@@ -48,9 +54,12 @@ const useCheckoutSession = async () => {
       });
 
       // const ticket = await getPaymentTicket();
+      console.log(monerisPreloadRequest);
       const ticket = await paymentService.create({
         endPoint: routes.ticket,
         data: monerisPreloadRequest,
+        // data: JSON.stringify(monerisPreloadRequest),
+        // data: JSON.stringify(preloadRequestData),
       });
       console.log('ticket: ', ticket.content);
 
@@ -71,7 +80,8 @@ const useCheckoutSession = async () => {
         setIsPaymentComplete(true);
         setPaymentReceipt(receipt.content);
         console.log('receipt: ', receipt.content);
-        navigate("/return", { replace: true, state: { success: receipt.content.success } });
+        console.log('useCheckout_kljmbgkmh');
+        navigate('/return', { replace: true, state: { success: receipt.content.success } });
       });
       // }
       return { isPaymentComplete, paymentReceipt };

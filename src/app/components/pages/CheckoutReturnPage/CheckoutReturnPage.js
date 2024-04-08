@@ -17,7 +17,7 @@ const CheckoutReturnPage = () => {
   // const { search } = useLocation();
   // const searchParsed = queryString.parse(search, { parseBooleans: true });
   const { state } = useLocation();
-  console.log(state);
+  // console.log(state);
 
   useEffect(() => {
 

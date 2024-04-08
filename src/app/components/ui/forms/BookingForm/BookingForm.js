@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { Form, useForm, useModal } from '../../../../hooks';
-import { getSearchQueryData } from '../../../../services/sessionStorage.service';
+import { getSearchQueryData, setSessionStorageBooking } from '../../../../services/sessionStorage.service';
 import { createBooking, getBookingCreatedStatus, getBookingsErrors } from '../../../../store/bookings';
 import { addBookingRoom } from '../../../../store/rooms';
 import { getCurrentUserId } from '../../../../store/users';
@@ -67,6 +67,9 @@ const BookingForm = () => {
       try {
         dispatch(createBooking(payload)).then((bookingData) => {
           if (bookingData) {
+            if (bookingData.userId === 'not found') {
+              setSessionStorageBooking(bookingData);
+            }
             dispatch(addBookingRoom(bookingData)).then(() => handleOpenModal());
             handleResetForm(event);
           }

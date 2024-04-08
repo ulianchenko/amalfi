@@ -63,9 +63,15 @@ const Breadcrumbs = () => {
   const params = useParams();
   const href = useHref();
 
-  const breadcrumbs = href.split('/');
+  let breadcrumbs = href.split('/');
+  // console.log('breadcrumbs: ', breadcrumbs);
+  if (breadcrumbs.includes('unauthorized')) {
+    // console.log('includes unauthorized');
+    breadcrumbs = breadcrumbs.filter(breadcrumb => breadcrumb !== 'profile' && breadcrumb !== 'unauthorized');
+  }
   let link = '';
 
+  // console.log('breadcrumbs2: ', breadcrumbs);
   // const breadcrumbItem = (breadcrumb) =>
   //   params?.roomId && params.roomId === breadcrumb ? <RoomBreadcrumbDisplay roomId={params.roomId}/> : breadcrumbText[link];
 

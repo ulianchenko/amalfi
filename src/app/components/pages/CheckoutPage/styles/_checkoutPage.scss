@@ -11,6 +11,14 @@
   font-size: $text-lg;
 }
 
+.checkoutPage__payment {
+  display: flex;
+}
+
+.checkoutPage__info {
+  width: 50%;
+}
+
 #checkoutPage__moneris_outer {
   height: 100vh;
   width: 800px;

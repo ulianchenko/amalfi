@@ -22,7 +22,9 @@ const SuccessBookingModal = ({ open, onClose, isLoading, bookingData }) => {
   };
 
   const handleGoMyBooking = () => {
-    navigate(`/profile/${currentUserId}/booking`);
+    const userId = currentUserId || 'unauthorized';
+    // navigate(`/profile/${currentUserId}/booking`);
+    navigate(`/profile/${userId}/booking`);
   };
 
   return (
@@ -47,7 +49,7 @@ const SuccessBookingModal = ({ open, onClose, isLoading, bookingData }) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleGoBack}>Go back</Button>
-        {
+        {/* {
           currentUserId ? (
 
           <Button onClick={handleGoMyBooking} variant='outlined'>
@@ -56,7 +58,10 @@ const SuccessBookingModal = ({ open, onClose, isLoading, bookingData }) => {
           ):(
             <></>
           )
-        }
+        } */}
+        <Button onClick={handleGoMyBooking} variant='outlined'>
+          My bookings
+        </Button>
       </DialogActions>
     </Modal>
   );

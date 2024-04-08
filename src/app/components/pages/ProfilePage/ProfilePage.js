@@ -8,6 +8,9 @@ import ProfileContentProxy from '../../ui/profile/ProfileContentProxy';
 const ProfilePage = () => {
   const { userId, route } = useParams();
   const currentUser = useSelector(getCurrentUserData());
+  // console.log('ProfilePage userId: ', userId);
+  // console.log('ProfilePage route: ', route);
+  // console.log('ProfilePage currentUser: ', currentUser);
 
   return (
     <div className='profile-page'>

@@ -12,6 +12,7 @@ import { getCurrentUserId } from '../store/users';
 const Profile = () => {
   const { userId } = useParams();
   const currentUserId = useSelector(getCurrentUserId());
+  // console.log(userId);
 
   return (
     <>

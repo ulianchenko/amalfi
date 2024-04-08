@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Container } from '@mui/material';
 import Button from '../../common/Button';
@@ -7,7 +7,7 @@ import Header from '../../common/Header';
 import configFile from '../../../config.json';
 import generateCheckoutSession from '../../../utils/generateCheckoutSession';
 import paymentService from '../../../services/payment.service';
-import useCheckoutSession from '../../../hooks/useCheckoutSession';
+// import useCheckoutSession from '../../../hooks/useCheckoutSession';
 // import monerisPreloadRequest from '../../../mockData/monerisPreloadRequest.json';
 
 // // For checkout with Moneris payment set moneris to true
@@ -122,7 +122,9 @@ const CheckoutPage = () => {
   // Check if payment gateway is "moneris"
   // const monerisGateway = configFile.paymentGateway === 'moneris';
   const navigate = useNavigate();
-  const { isPaymentComplete, paymentReceipt } = useCheckoutSession();
+  const { state } = useLocation();
+  // const { isPaymentComplete, paymentReceipt } = useCheckoutSession(state.totalPrice || 0);
+  // const { isPaymentComplete, paymentReceipt } = useCheckoutSession();
 
   useEffect(() => {
     if (configFile.monerisGateway) {
@@ -188,31 +190,40 @@ const CheckoutPage = () => {
 
       // monerisPayment();
       // with using util generateCheckoutSession ////////////////////////////////////
-      // const monerisPayment = async () => {
-      //   const checkoutResult = await generateCheckoutSession(navigate);
-      //   console.log('checkoutResult: ', checkoutResult);
-      //   const { isPaymentComplete, paymentReceipt } = checkoutResult;
-      //   console.log('isPaymentComplete: ', isPaymentComplete);
-      //   console.log('paymentReceipt: ', paymentReceipt);
-      //   if (isPaymentComplete) {
-      //     navigate('/return', { replace: true, state: {success: paymentReceipt.success} });
-      //   }
-      // }
+      const monerisPayment = async () => {
+        // const checkoutResult = await generateCheckoutSession(navigate, state?.totalPrice || 0);
+        console.log('state to generateCheckoutSession', state);
+        if(state && state.totalPrice > 0) {
+          await generateCheckoutSession(navigate, state?.totalPrice || 0);
+        }
+        // console.log('checkoutResult: ', checkoutResult);
+        // const { isPaymentComplete, paymentReceipt } = checkoutResult;
+        // console.log('isPaymentComplete: ', isPaymentComplete);
+        // console.log('paymentReceipt: ', paymentReceipt);
+        // if (isPaymentComplete) {
+        //   console.log('qwertyqwertyqwerty');
+        //   navigate('/return', { replace: true, state: {success: paymentReceipt.success} });
+        // }
+      }
 
-      // monerisPayment();
+      monerisPayment();
       // with using util generateCheckoutSession ////////////////////////////////////
 
 
       // with using hook useCheckoutSession ////////////////////////////////////
       // const { isPaymentComplete, paymentReceipt } = useCheckoutSession();
 
-      if (isPaymentComplete) {
-        navigate('/return', { replace: true, state: {success: paymentReceipt.success} });
-      }
+      // if (isPaymentComplete) {
+      //   console.log('CheckoutPage_dfgjftrmhlyhtrjletjrly');
+      //   navigate('/return', { replace: true, state: {success: paymentReceipt.success} });
+      // }
       // with using hook useCheckoutSession ////////////////////////////////////
     }
 
-  }, [navigate, isPaymentComplete]);
+  // }, [navigate, isPaymentComplete]);
+  // }, [navigate]);
+  // eslint-disable-next-line
+  }, []);
 
   const handleStripeCheckout = (e) => {
     e.preventDefault();
@@ -233,8 +244,18 @@ const CheckoutPage = () => {
       {
         configFile.monerisGateway ? (
           <>
-            <div id="checkoutPage__moneris_outer">
-              <div id="monerisCheckout"></div>
+            <div className="checkoutPage__payment">
+              <div className="checkoutPage__info">
+                <h3>This is a checkout information</h3>
+              </div>
+
+              {
+                !state || state.totalPrice <= 0 ?
+                <h3> Total price is 0. Please check you've booked a room</h3> :
+                <div id="checkoutPage__moneris_outer">
+                  <div id="monerisCheckout"></div>
+                </div>
+              }
             </div>
           </>
         ) : (

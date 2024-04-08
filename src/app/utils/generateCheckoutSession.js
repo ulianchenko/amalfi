@@ -2,10 +2,14 @@ import paymentService from '../services/payment.service';
 import configFile from '../config.json';
 import monerisPreloadRequest from '../mockData/monerisPreloadRequest.json';
 
-const generateCheckoutSession = async (navigate) => {
+const generateCheckoutSession = async (navigate, totalPrice) => {
+  console.log('totalPrice in generateCheckoutSession: ', totalPrice);
+  monerisPreloadRequest.txn_total = totalPrice.toFixed(2).toString();
+  monerisPreloadRequest.cart.subtotal = (totalPrice / (100 + parseFloat(monerisPreloadRequest.cart.tax.rate)) * 100).toFixed(2).toString();
+  monerisPreloadRequest.cart.tax.amount = (totalPrice - monerisPreloadRequest.cart.subtotal).toFixed(2).toString();
   try {
     window.onload = function () {
-      console.log("start");
+      // console.log("start");
       window.onbeforeunload = function (e) {
         e = e || window.event;
         var msg = {};
@@ -41,16 +45,16 @@ const generateCheckoutSession = async (navigate) => {
       myCheckout.setCallback("payment_receipt", (res) => {
         // console.log("payment_receipt: ", res)
       });
-
+      // console.log('monerisPreloadRequest: ', monerisPreloadRequest);
       // const ticket = await getPaymentTicket();
       const ticket = await paymentService.create({
         endPoint: routes.ticket,
         data: monerisPreloadRequest,
       });
-      console.log('ticket: ', ticket.content);
+      // console.log('ticket: ', ticket.content);
 
       myCheckout.startCheckout([ticket.content]);
-      console.log('checkout started');
+      // console.log('checkout started');
 
       myCheckout.setCallback("payment_complete", async (res) => {
         // const receipt = await getPaymentReceipt(ticket);
@@ -63,7 +67,7 @@ const generateCheckoutSession = async (navigate) => {
 
         isPaymentComplete = true;
         paymentReceipt = receipt.content;
-        console.log('receipt: ', receipt.content);
+        // console.log('receipt: ', receipt.content);
         navigate("/return", { replace: true, state: { success: receipt.content.success } });
       });
       // }
