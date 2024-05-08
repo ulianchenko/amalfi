@@ -5,6 +5,8 @@ import Main from '../layouts/main'
 import Page404 from '../components/pages/Page404';
 import CheckoutPage from '../components/pages/CheckoutPage';
 import CheckoutReturnPage from '../components/pages/CheckoutReturnPage';
+import QuickbooksAuthPage from '../components/pages/QuickbooksAuthPage';
+import QuickbooksRedirectPage from '../components/pages/QuickboooksRedirectPage';
 import { getIsLoggedIn } from '../store/users';
 
 
@@ -58,6 +60,16 @@ export const navigationRoutes = [
             </Route> : null } */}
             <Route path='/checkout' element={<CheckoutPage />} />
             <Route path='/return' element={<CheckoutReturnPage />} />
+            <Route path='/quickbooks' element={<QuickbooksAuthPage />} />
+            <Route path='/quickbooksredirect' element={<QuickbooksRedirectPage />} />
+            {/* <Route
+              path='/quickbooksauth'
+              loader={(loader) => console.log('loader: ', loader)}
+              component={(data) => {
+                console.log(data);
+                window.location.href = 'https://www.facebook.com/'
+              }}
+            /> */}
             <Route path='*' element={<Page404 />} />
           </Routes>
         </Suspense>

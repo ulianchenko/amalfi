@@ -1,0 +1,16 @@
+.quickbooksRedirectPage__main {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.quickbooksRedirectPage__title {
+  font-size: $text-lg;
+  margin-bottom: 20px;
+}
+
+.quickbooksRedirectPage__message {
+  margin-bottom: 20px;
+}

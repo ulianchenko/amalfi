@@ -1,0 +1,16 @@
+.quickbooksAuthPage__main {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.quickbooksAuthPage__title {
+  font-size: $text-lg;
+  margin-bottom: 20px;
+}
+
+.quickbooksAuthPage__message {
+  margin-bottom: 20px;
+}

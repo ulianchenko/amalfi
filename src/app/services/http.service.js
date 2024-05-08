@@ -92,6 +92,10 @@ import localStorageService from './localStorage.service';
 
 const http = axios.create({
   baseURL: configFile.apiEndPoint,
+  // headers: {'Access-Control-Allow-Origin': 'https://appcenter.intuit.com'
+  // headers: {'Access-Control-Allow-Origin': 'http://localhost:8080/api/quickbooks/'},
+  // withCredentials: true,
+  // crossDomain: true,
 });
 
 http.interceptors.request.use(
