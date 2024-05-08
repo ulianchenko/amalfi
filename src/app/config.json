@@ -1,5 +1,5 @@
 {
-  "apiEndPoint": "https://amalfi-api.onrender.com/api/",
+  "apiEndPoint": "https://amalfi-api.onrender.com/api",
   "monerisGateway": true,
   "moneris": {
     "store_id": "moneris",
